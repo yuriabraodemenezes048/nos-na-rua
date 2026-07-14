@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   ESTILOS BASE
+   ========================================================================== */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  /* Respeita quem prefere menos animações (acessibilidade) */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  /* Offset para a navegação por âncora não ficar atrás do cabeçalho fixo */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  /* Foco visível e acessível em qualquer elemento interativo */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-none ring-2 ring-verde-500 ring-offset-2 ring-offset-cream;
+  }
+}
+
+/* ==========================================================================
+   COMPONENTES REUTILIZÁVEIS (botões, containers, cartões)
+   ========================================================================== */
+@layer components {
+  /* Container central com largura de leitura confortável */
+  .container-site {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Botão principal — "Quero Doar" e ações de destaque */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-verde-500
+      px-6 py-3 text-base font-semibold text-white shadow-soft transition
+      hover:bg-verde-600 active:scale-[0.98];
+  }
+
+  /* Botão secundário — ações de apoio */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border
+      border-verde-200 bg-white px-6 py-3 text-base font-semibold text-verde-600
+      shadow-sm transition hover:border-verde-300 hover:bg-verde-50
+      active:scale-[0.98];
+  }
+
+  /* Botão WhatsApp */
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366]
+      px-6 py-3 text-base font-semibold text-white shadow-soft transition
+      hover:bg-[#1FB457] active:scale-[0.98];
+  }
+
+  /* Botão neutro / contorno claro */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border
+      border-ink/15 bg-white px-6 py-3 text-base font-semibold text-ink
+      transition hover:bg-sand active:scale-[0.98];
+  }
+
+  /* Cartão padrão */
+  .card {
+    @apply rounded-2xl border border-ink/5 bg-white p-6 shadow-card transition;
+  }
+
+  /* "Etiqueta" acima dos títulos de seção */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-verde-50 px-3 py-1
+      text-sm font-semibold text-verde-600;
+  }
+}
