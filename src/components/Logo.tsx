@@ -1,43 +1,66 @@
-import { site } from "@/lib/site";
+import Image from "next/image";
+import { siteConfig } from "@/data/site";
 
 /**
- * Marca da ONG: um pequeno emblema circular + o nome.
+ * Assinatura da associação.
  *
- * OBSERVAÇÃO: este é um emblema provisório desenhado em código. Quando a ONG
- * enviar o logotipo oficial (a arte da mandala "Nós na Rua"), basta trocar o
- * bloco do emblema por uma <Image src="/logo.png" .../>.
+ * Quando o arquivo oficial do logotipo for enviado, basta colocá-lo em
+ * /public e informar o caminho em `siteConfig.logo` — este componente passa a
+ * exibir a marca automaticamente, sem nenhuma outra alteração de código.
+ *
+ * Enquanto isso, exibimos a assinatura tipográfica da associação com um
+ * pequeno ornamento circular (elemento de apoio da identidade), em vez de
+ * tentar reproduzir o logotipo original.
  */
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({
+  size = "header",
+  className = "",
+}: {
+  size?: "header" | "footer";
+  className?: string;
+}) {
+  const isFooter = size === "footer";
+
+  if (siteConfig.logo) {
+    return (
+      <Image
+        src={siteConfig.logo}
+        alt={siteConfig.legalName}
+        width={isFooter ? 200 : 148}
+        height={isFooter ? 200 : 148}
+        priority={!isFooter}
+        className={`h-auto ${isFooter ? "w-28" : "w-16"} ${className}`}
+      />
+    );
+  }
+
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      {/* Ornamento circular — elemento decorativo da identidade */}
       <span
-        aria-hidden
-        className="relative flex h-9 w-9 items-center justify-center rounded-full bg-terra-500 text-cream shadow-sm ring-1 ring-terra-600/20"
+        aria-hidden="true"
+        className={`relative grid shrink-0 place-items-center rounded-full bg-brown ${
+          isFooter ? "h-11 w-11" : "h-9 w-9"
+        }`}
       >
-        <svg viewBox="0 0 40 40" className="h-6 w-6" fill="none" aria-hidden>
-          {/* pétalas simples ao redor (referência à mandala) */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <ellipse
-              key={i}
-              cx="20"
-              cy="7"
-              rx="2.1"
-              ry="4"
-              fill="currentColor"
-              opacity="0.85"
-              transform={`rotate(${i * 45} 20 20)`}
-            />
-          ))}
-          <circle cx="20" cy="20" r="6.5" fill="currentColor" />
-          <circle cx="20" cy="20" r="3" fill="#B85A34" />
-        </svg>
+        <span
+          className={`rounded-full border-2 border-cream/70 ${
+            isFooter ? "h-5 w-5" : "h-4 w-4"
+          }`}
+        />
+        <span className="absolute h-1.5 w-1.5 rounded-full bg-terracotta" />
       </span>
+
       <span className="flex flex-col leading-none">
-        <span className="font-display text-lg font-semibold text-ink">
-          {site.name}
+        <span
+          className={`font-display font-semibold tracking-tight text-ink ${
+            isFooter ? "text-xl" : "text-lg"
+          }`}
+        >
+          Nós na Rua
         </span>
-        <span className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-stone">
-          ONG · Solidariedade
+        <span className="mt-1 text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-muted">
+          Associação · São José/SC
         </span>
       </span>
     </span>

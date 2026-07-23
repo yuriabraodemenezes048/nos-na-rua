@@ -1,40 +1,33 @@
-import { Header } from "@/components/Header";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/sections/Hero";
-import { QuemSomos } from "@/components/sections/QuemSomos";
-import { OQueFazemos } from "@/components/sections/OQueFazemos";
-import { ParaOndeVai } from "@/components/sections/ParaOndeVai";
-import { Projetos } from "@/components/sections/Projetos";
-import { Transparencia } from "@/components/sections/Transparencia";
-import { ComoDoar } from "@/components/sections/ComoDoar";
-import { Empresas } from "@/components/sections/Empresas";
-import { OutrasFormas } from "@/components/sections/OutrasFormas";
-import { Contato } from "@/components/sections/Contato";
+import { SiteShell } from "@/components/SiteShell";
+import { Hero } from "@/components/home/Hero";
+import { TrustStrip } from "@/components/home/TrustStrip";
+import { WorkAreas } from "@/components/home/WorkAreas";
+import { DonationJourney } from "@/components/home/DonationJourney";
+import { CurrentCampaign } from "@/components/home/CurrentCampaign";
+import { RealGallery } from "@/components/home/RealGallery";
+import { TransparencyPreview } from "@/components/home/TransparencyPreview";
+import { AboutSection } from "@/components/home/AboutSection";
+import { OtherWaysToHelp } from "@/components/home/OtherWaysToHelp";
+import { FinalCTA } from "@/components/home/FinalCTA";
 
 /**
- * Página inicial — landing page institucional da ONG Nós na Rua.
- * A ordem das seções segue o roteiro de conversão:
- * apresentar → gerar confiança → mostrar o destino → facilitar a doação.
+ * Página inicial.
+ * `CurrentCampaign` e `RealGallery` só aparecem quando existem dados reais —
+ * enquanto não houver, não renderizam nada.
  */
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <QuemSomos />
-        <OQueFazemos />
-        <ParaOndeVai />
-        <Projetos />
-        <Transparencia />
-        <ComoDoar />
-        <Empresas />
-        <OutrasFormas />
-        <Contato />
-      </main>
-      <Footer />
-      <WhatsAppFloat />
-    </>
+    <SiteShell>
+      <Hero />
+      <TrustStrip />
+      <WorkAreas />
+      <DonationJourney />
+      <CurrentCampaign />
+      <RealGallery />
+      <TransparencyPreview />
+      <AboutSection />
+      <OtherWaysToHelp />
+      <FinalCTA />
+    </SiteShell>
   );
 }

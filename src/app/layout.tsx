@@ -1,65 +1,78 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
-import { Analytics } from "@/components/Analytics";
+import { siteConfig } from "@/data/site";
 
-/* Fontes:
-   - Inter para o corpo do texto (muito legível).
-   - Fraunces para os títulos (dá um toque humano e acolhedor). */
-const inter = Inter({
+/* Tipografia: Bricolage Grotesque nos títulos, DM Sans nos textos. */
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-bricolage",
   display: "swap",
+  weight: ["500", "600", "700"],
 });
 
-const fraunces = Fraunces({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.name}`,
+    default: "Nós na Rua | Associação em São José – SC",
+    template: `%s | ${siteConfig.name}`,
   },
-  description: site.description,
-  keywords: [
-    "ONG",
-    "doação",
-    "solidariedade",
-    "Nós na Rua",
-    "voluntariado",
-    "ação social",
-    "PIX",
-  ],
-  authors: [{ name: site.name }],
+  description:
+    "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
+  applicationName: siteConfig.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: site.url,
-    siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
+    url: siteConfig.url,
+    siteName: siteConfig.legalName,
+    title: "Nós na Rua | Associação em São José – SC",
+    description:
+      "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
+    title: "Nós na Rua | Associação em São José – SC",
+    description:
+      "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FBF8F2",
+  themeColor: "#F7F3EF",
   width: "device-width",
   initialScale: 1,
+};
+
+/**
+ * Dados estruturados da associação.
+ * O endereço é publicado apenas em nível de cidade e estado — o endereço
+ * cadastral é residencial e não deve ser divulgado.
+ */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  url: siteConfig.url,
+  email: siteConfig.contact.email,
+  telephone: "+5548991353909",
+  taxID: siteConfig.organization.cnpj,
+  foundingDate: siteConfig.organization.foundedISO,
+  sameAs: [siteConfig.social.instagram],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: siteConfig.location.city,
+    addressRegion: siteConfig.location.state,
+    addressCountry: "BR",
+  },
 };
 
 export default function RootLayout({
@@ -68,17 +81,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="pt-BR" className={`${bricolage.variable} ${dmSans.variable}`}>
       <body>
-        {/* Link "pular para o conteúdo" — acessibilidade (teclado) */}
-        <a
-          href="#topo"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-verde-500 focus:px-4 focus:py-2 focus:text-white"
-        >
-          Pular para o conteúdo
-        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
-        <Analytics />
       </body>
     </html>
   );

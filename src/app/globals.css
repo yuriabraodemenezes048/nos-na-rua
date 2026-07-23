@@ -3,90 +3,118 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   ESTILOS BASE
+   TOKENS GLOBAIS
    ========================================================================== */
 @layer base {
   :root {
+    /* Cores da marca */
+    --color-brown: #7a4a3a;
+    --color-brown-dark: #5e382c;
+    --color-black: #111111;
+    --color-sand: #ede5de;
+    --color-warm-white: #f7f3ef;
+    --color-terracotta: #d97c67;
+
+    /* Ritmo e forma */
+    --radius-card: 1.25rem;
+    --shadow-soft: 0 8px 24px -16px rgba(17, 17, 17, 0.25);
+    --section-y: 4rem;
+
     color-scheme: light;
-    scroll-behavior: smooth;
   }
 
-  /* Respeita quem prefere menos animações (acessibilidade) */
-  @media (prefers-reduced-motion: reduce) {
+  @media (min-width: 768px) {
     :root {
+      --section-y: 5.5rem;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o cabeçalho fixo na navegação por âncora */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    /* Espaço para a barra de ações fixa no celular */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hierarquia tipográfica */
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-semibold tracking-tight text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visível e consistente em toda a navegação por teclado */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brown ring-offset-2 ring-offset-cream;
+    border-radius: 0.25rem;
+  }
+
+  /* Respeita quem prefere menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    html {
       scroll-behavior: auto;
     }
     *,
     *::before,
     *::after {
-      animation-duration: 0.001ms !important;
+      animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
+      transition-duration: 0.01ms !important;
     }
-  }
-
-  body {
-    @apply bg-cream text-ink font-sans antialiased;
-  }
-
-  /* Offset para a navegação por âncora não ficar atrás do cabeçalho fixo */
-  section[id] {
-    scroll-margin-top: 5.5rem;
-  }
-
-  /* Foco visível e acessível em qualquer elemento interativo */
-  a:focus-visible,
-  button:focus-visible {
-    @apply outline-none ring-2 ring-verde-500 ring-offset-2 ring-offset-cream;
   }
 }
 
 /* ==========================================================================
-   COMPONENTES REUTILIZÁVEIS (botões, containers, cartões)
+   COMPONENTES REUTILIZÁVEIS
    ========================================================================== */
 @layer components {
-  /* Container central com largura de leitura confortável */
   .container-site {
     @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
   }
 
-  /* Botão principal — "Quero Doar" e ações de destaque */
+  .section {
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+
+  /* Botão principal — Marrom Terra com texto branco (contraste 7.3:1) */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-verde-500
-      px-6 py-3 text-base font-semibold text-white shadow-soft transition
-      hover:bg-verde-600 active:scale-[0.98];
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
+      bg-brown px-7 text-base font-semibold text-white transition-colors
+      hover:bg-brown-dark active:bg-brown-dark;
   }
 
-  /* Botão secundário — ações de apoio */
+  /* Botão secundário — contorno discreto */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border
-      border-verde-200 bg-white px-6 py-3 text-base font-semibold text-verde-600
-      shadow-sm transition hover:border-verde-300 hover:bg-verde-50
-      active:scale-[0.98];
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
+      border border-brown/25 bg-transparent px-7 text-base font-semibold
+      text-brown transition-colors hover:border-brown/50 hover:bg-sand;
   }
 
-  /* Botão WhatsApp */
-  .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366]
-      px-6 py-3 text-base font-semibold text-white shadow-soft transition
-      hover:bg-[#1FB457] active:scale-[0.98];
+  /* Botão sobre fundo escuro (marrom) */
+  .btn-on-brown {
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
+      bg-white px-7 text-base font-semibold text-brown transition-colors
+      hover:bg-sand;
   }
 
-  /* Botão neutro / contorno claro */
-  .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border
-      border-ink/15 bg-white px-6 py-3 text-base font-semibold text-ink
-      transition hover:bg-sand active:scale-[0.98];
+  /* Título de seção */
+  .section-title {
+    @apply font-display text-[1.75rem] leading-tight sm:text-[2.125rem];
   }
 
-  /* Cartão padrão */
-  .card {
-    @apply rounded-2xl border border-ink/5 bg-white p-6 shadow-card transition;
-  }
-
-  /* "Etiqueta" acima dos títulos de seção */
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full bg-verde-50 px-3 py-1
-      text-sm font-semibold text-verde-600;
+  /* Texto de apoio com largura de leitura confortável */
+  .section-lead {
+    @apply max-w-prose text-lg leading-relaxed text-muted;
   }
 }

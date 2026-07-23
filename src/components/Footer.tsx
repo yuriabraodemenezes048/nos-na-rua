@@ -1,107 +1,96 @@
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { navLinks } from "@/lib/nav";
-import {
-  WhatsAppIcon,
-  InstagramIcon,
-  MailIcon,
-  HeartIcon,
-} from "@/components/Icons";
-import {
-  site,
-  whatsappLink,
-  instagramLink,
-  emailLink,
-} from "@/lib/site";
+import { InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/Icons";
+import { siteConfig, whatsappUrl, emailUrl } from "@/data/site";
 
 /**
- * SEÇÃO 11 — RODAPÉ COMPLETO
+ * Rodapé compacto.
+ * Exibe apenas cidade e estado — o endereço cadastral não é divulgado.
  */
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink/5 bg-white">
-      <div className="container-site py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
-          {/* Marca + frase */}
+    <footer className="border-t border-sand bg-sand/50">
+      <div className="container-site py-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
+          {/* Identificação */}
           <div className="flex flex-col gap-4">
-            <Logo />
-            <p className="max-w-sm text-stone">
-              {site.tagline} A ONG {site.name} realiza ações de cuidado e
-              acolhimento a pessoas em situação de vulnerabilidade.
-            </p>
-            <a href="#doacao" className="btn-primary w-fit py-2.5">
-              <HeartIcon className="h-4 w-4" />
-              Quero Doar
-            </a>
+            <Logo size="footer" />
+            <div className="text-sm leading-relaxed text-muted">
+              <p className="font-medium text-ink">{siteConfig.legalName}</p>
+              <p>CNPJ {siteConfig.organization.cnpj}</p>
+              <p>{siteConfig.location.label}</p>
+            </div>
           </div>
 
           {/* Navegação */}
           <nav aria-label="Navegação do rodapé" className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-ink">
               Navegação
-            </h3>
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-stone transition hover:text-verde-600"
-              >
-                {link.label}
-              </a>
-            ))}
+            </h2>
+            <Link href="/" className="text-sm text-muted hover:text-brown">
+              Início
+            </Link>
+            <Link
+              href="/transparencia"
+              className="text-sm text-muted hover:text-brown"
+            >
+              Transparência
+            </Link>
+            <Link href="/doe" className="text-sm text-muted hover:text-brown">
+              Doar agora
+            </Link>
+            <Link
+              href="/politica-de-privacidade"
+              className="text-sm text-muted hover:text-brown"
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              href="/termos-de-uso"
+              className="text-sm text-muted hover:text-brown"
+            >
+              Termos de Uso
+            </Link>
           </nav>
 
-          {/* Contato / redes */}
+          {/* Contato */}
           <div className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
-              Fale com a gente
-            </h3>
+            <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-ink">
+              Contato
+            </h2>
             <a
-              href={whatsappLink()}
+              href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-stone transition hover:text-verde-600"
+              className="inline-flex items-center gap-2 text-sm text-muted hover:text-brown"
             >
-              <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
-              {site.contact.whatsappLabel}
+              <WhatsAppIcon className="h-4 w-4 shrink-0" />
+              {siteConfig.contact.whatsappLabel}
             </a>
             <a
-              href={instagramLink()}
+              href={siteConfig.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-stone transition hover:text-terra-500"
+              className="inline-flex items-center gap-2 text-sm text-muted hover:text-brown"
             >
-              <InstagramIcon className="h-5 w-5 text-terra-500" />
-              @{site.contact.instagram}
+              <InstagramIcon className="h-4 w-4 shrink-0" />
+              {siteConfig.social.instagramHandle}
             </a>
             <a
-              href={emailLink()}
-              className="inline-flex items-center gap-2 text-stone transition hover:text-verde-600"
+              href={emailUrl}
+              className="inline-flex items-center gap-2 break-all text-sm text-muted hover:text-brown"
             >
-              <MailIcon className="h-5 w-5" />
-              {site.contact.email}
+              <MailIcon className="h-4 w-4 shrink-0" />
+              {siteConfig.contact.email}
             </a>
           </div>
         </div>
 
-        {/* Linha inferior */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-ink/5 pt-6 text-sm text-stone sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1">
-            <p>
-              © {year} {site.name}. Todos os direitos reservados.
-            </p>
-            <p>
-              CNPJ: <span className="font-medium">{site.cnpj}</span> ·{" "}
-              <a href="/privacidade" className="underline hover:text-ink">
-                Política de Privacidade
-              </a>
-            </p>
-          </div>
-          <p className="rounded-lg bg-sand px-3 py-1.5 text-xs text-stone">
-            ✱ Protótipo demonstrativo — conteúdo provisório para apresentação.
-          </p>
-        </div>
+        <p className="mt-10 border-t border-brown/10 pt-6 text-xs text-muted">
+          © {year} {siteConfig.legalName}. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );
