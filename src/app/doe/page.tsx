@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SiteShell } from "@/components/SiteShell";
 import { CopyPixButton } from "@/components/CopyPixButton";
+import { Character } from "@/components/Character";
+import { Reveal } from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/Icons";
 import { siteConfig, whatsappUrl, whatsappMessages } from "@/data/site";
 
@@ -31,22 +33,34 @@ export default function DonatePage() {
 
   return (
     <SiteShell>
-      <section className="section">
-        <div className="container-site max-w-2xl">
-          <h1 className="font-display text-[2rem] leading-tight sm:text-[2.5rem]">
-            Faça sua doação
-          </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted">
-            Sua contribuição ajuda a fortalecer as ações realizadas pela
-            Associação Nós na Rua.
-          </p>
+      {/* Introdução com personagem de apoio */}
+      <section className="section pb-8 sm:pb-10">
+        <div className="container-site grid items-center gap-8 lg:grid-cols-[1fr_0.55fr]">
+          <div>
+            <p className="kicker">Doe agora</p>
+            <h1 className="mt-4 font-display text-[2.25rem] leading-[1.05] sm:text-[2.75rem]">
+              Faça sua doação
+            </h1>
+            <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
+              Sua contribuição ajuda a fortalecer as ações realizadas pela
+              Associação Nós na Rua. Cada valor vira alimento, cuidado e
+              presença.
+            </p>
+          </div>
+          <div className="mx-auto hidden w-full max-w-[13rem] sm:block">
+            <Character who="box" tone="sand" float objectPosition="center top" />
+          </div>
+        </div>
+      </section>
 
-          {/* Bloco principal do PIX */}
-          <div className="mt-10 rounded-2xl border border-sand bg-sand/40 p-6 sm:p-8">
+      {/* Bloco do PIX */}
+      <section className="pb-4">
+        <div className="container-site max-w-2xl">
+          <Reveal className="rounded-3xl border border-sand bg-sand/40 p-6 shadow-soft sm:p-8">
             <h2 className="text-[0.8125rem] font-semibold uppercase tracking-wide text-brown">
               Chave PIX — {donation.pixKeyType}
             </h2>
-            <p className="mt-2 break-all font-display text-2xl font-semibold text-ink">
+            <p className="mt-2 break-all font-display text-2xl font-semibold text-ink sm:text-3xl">
               {donation.pixKey}
             </p>
 
@@ -54,7 +68,6 @@ export default function DonatePage() {
               <CopyPixButton />
             </div>
 
-            {/* O QR Code só aparece quando o arquivo oficial for cadastrado */}
             {donation.qrCodeImage && (
               <div className="mt-8 flex flex-col items-center gap-3 border-t border-brown/10 pt-8">
                 <Image
@@ -70,7 +83,6 @@ export default function DonatePage() {
               </div>
             )}
 
-            {/* Destinatário */}
             <dl className="mt-8 space-y-4 border-t border-brown/10 pt-6 text-[0.9375rem]">
               <div>
                 <dt className="text-muted">Destinatário</dt>
@@ -83,20 +95,23 @@ export default function DonatePage() {
                 </dd>
               </div>
             </dl>
-          </div>
+          </Reveal>
 
-          {/* Aviso de segurança */}
           <p className="mt-6 rounded-xl border-l-4 border-terracotta bg-sand/60 p-4 text-[0.9375rem] leading-relaxed text-ink">
             Antes de confirmar a transferência, confira se o destinatário
             exibido no seu banco é{" "}
             <strong className="font-semibold">{donation.receiverName}</strong>.
           </p>
+        </div>
+      </section>
 
-          {/* Passo a passo */}
-          <h2 className="section-title mt-12 text-[1.5rem] sm:text-[1.75rem]">
+      {/* Passo a passo */}
+      <section className="section pt-10">
+        <div className="container-site max-w-2xl">
+          <h2 className="section-title text-[1.5rem] sm:text-[1.75rem]">
             Como doar pelo PIX
           </h2>
-          <ol className="mt-5 space-y-3">
+          <ol className="mt-6 space-y-3">
             {steps.map((step, index) => (
               <li key={step} className="flex gap-3 text-[0.9375rem] text-muted">
                 <span
@@ -110,11 +125,8 @@ export default function DonatePage() {
             ))}
           </ol>
 
-          {/* Comprovante — opcional */}
           <div className="mt-12 border-t border-sand pt-8">
-            <h2 className="font-display text-lg">
-              Quer enviar o comprovante?
-            </h2>
+            <h2 className="font-display text-lg">Quer enviar o comprovante?</h2>
             <p className="mt-2 max-w-prose text-[0.9375rem] leading-relaxed text-muted">
               O envio é opcional. Se preferir, você pode compartilhar o
               comprovante com a equipe pelo WhatsApp.

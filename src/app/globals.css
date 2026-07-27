@@ -18,30 +18,28 @@
     /* Ritmo e forma */
     --radius-card: 1.25rem;
     --shadow-soft: 0 8px 24px -16px rgba(17, 17, 17, 0.25);
-    --section-y: 4rem;
+    --shadow-lift: 0 24px 60px -30px rgba(58, 34, 24, 0.5);
+    --section-y: 4.5rem;
 
     color-scheme: light;
   }
 
   @media (min-width: 768px) {
     :root {
-      --section-y: 5.5rem;
+      --section-y: 6.5rem;
     }
   }
 
   html {
     scroll-behavior: smooth;
-    /* Compensa o cabeçalho fixo na navegação por âncora */
     scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-cream text-ink font-sans antialiased;
-    /* Espaço para a barra de ações fixa no celular */
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* Hierarquia tipográfica */
   h1,
   h2,
   h3 {
@@ -53,13 +51,11 @@
     text-wrap: pretty;
   }
 
-  /* Foco visível e consistente em toda a navegação por teclado */
   :focus-visible {
     @apply outline-none ring-2 ring-brown ring-offset-2 ring-offset-cream;
     border-radius: 0.25rem;
   }
 
-  /* Respeita quem prefere menos movimento */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -87,34 +83,142 @@
     padding-bottom: var(--section-y);
   }
 
-  /* Botão principal — Marrom Terra com texto branco (contraste 7.3:1) */
+  /* Botões ---------------------------------------------------------------- */
   .btn-primary {
     @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
-      bg-brown px-7 text-base font-semibold text-white transition-colors
-      hover:bg-brown-dark active:bg-brown-dark;
+      bg-brown px-7 text-base font-semibold text-white shadow-soft
+      transition-[transform,background-color] duration-200
+      hover:-translate-y-0.5 hover:bg-brown-dark active:translate-y-0;
   }
 
-  /* Botão secundário — contorno discreto */
   .btn-secondary {
     @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
-      border border-brown/25 bg-transparent px-7 text-base font-semibold
-      text-brown transition-colors hover:border-brown/50 hover:bg-sand;
+      border border-brown/30 bg-white/60 px-7 text-base font-semibold
+      text-brown transition-colors duration-200 hover:border-brown/50
+      hover:bg-white;
   }
 
-  /* Botão sobre fundo escuro (marrom) */
   .btn-on-brown {
     @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full
-      bg-white px-7 text-base font-semibold text-brown transition-colors
-      hover:bg-sand;
+      bg-white px-7 text-base font-semibold text-brown
+      transition-[transform,background-color] duration-200
+      hover:-translate-y-0.5 hover:bg-sand;
   }
 
-  /* Título de seção */
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold
+      text-brown underline-offset-4 transition-colors hover:text-brown-dark
+      hover:underline;
+  }
+
+  /* Tipografia de seção --------------------------------------------------- */
+  .kicker {
+    @apply inline-flex items-center gap-2 text-[0.8125rem] font-semibold
+      uppercase tracking-[0.14em] text-brown;
+  }
+
   .section-title {
-    @apply font-display text-[1.75rem] leading-tight sm:text-[2.125rem];
+    @apply font-display text-[1.875rem] leading-[1.1] sm:text-[2.375rem];
   }
 
-  /* Texto de apoio com largura de leitura confortável */
   .section-lead {
     @apply max-w-prose text-lg leading-relaxed text-muted;
+  }
+
+  /* Moldura orgânica dos personagens -------------------------------------- */
+  .character-frame {
+    @apply relative overflow-hidden bg-sand;
+    border-radius: 46% 54% 48% 52% / 54% 46% 54% 46%;
+  }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES — leves, baseadas em transform/opacity
+   ========================================================================== */
+@layer utilities {
+  /* Revelação ao entrar na viewport (classe .is-visible adicionada por JS).
+     Progressivo: o estado escondido só é aplicado quando o JS está ativo
+     (classe .js no <html>). Sem JS, o conteúdo aparece normalmente. */
+  .reveal {
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: opacity, transform;
+  }
+  .js .reveal-left {
+    transform: translateX(-32px);
+  }
+  .js .reveal-right {
+    transform: translateX(32px);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Flutuação idle muito discreta */
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-float {
+    animation: float-soft 6s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float-soft 8s ease-in-out infinite;
+  }
+
+  /* Movimento muito lento em blobs decorativos */
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(10px, -12px) scale(1.03);
+    }
+  }
+  .animate-drift {
+    animation: drift 14s ease-in-out infinite;
+  }
+
+  /* Pulso muito sutil de atenção no CTA final */
+  @keyframes halo {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.06);
+      opacity: 0.75;
+    }
+  }
+  .animate-halo {
+    animation: halo 4s ease-in-out infinite;
+  }
+
+  /* Desliga todo o movimento contínuo quando o usuário pede menos animação */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .animate-float,
+    .animate-float-slow,
+    .animate-drift,
+    .animate-halo {
+      animation: none !important;
+    }
   }
 }

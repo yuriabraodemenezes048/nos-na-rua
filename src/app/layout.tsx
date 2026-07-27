@@ -81,7 +81,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${bricolage.variable} ${dmSans.variable}`}>
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${bricolage.variable} ${dmSans.variable}`}
+    >
+      <head>
+        {/* Marca o documento como "com JS" antes da pintura, para que as
+            animações de entrada só escondam conteúdo quando puderem revelá-lo. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

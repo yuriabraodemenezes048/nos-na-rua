@@ -6,21 +6,22 @@ import { Logo } from "@/components/Logo";
 import { MenuIcon, CloseIcon } from "@/components/Icons";
 
 const navLinks = [
-  { href: "/", label: "Início" },
+  { href: "/#quem-somos", label: "Quem somos" },
+  { href: "/#projetos", label: "Projetos" },
+  { href: "/#como-ajudar", label: "Como ajudar" },
   { href: "/transparencia", label: "Transparência" },
 ];
 
 /**
  * Cabeçalho fixo e compacto.
- * Desktop: marca, dois links e o botão "Doar agora".
- * Celular: marca e menu simples, com foco controlado e fechamento por Escape.
+ * Desktop (≥ lg): marca, âncoras e o botão "Doar agora".
+ * Até lg: marca e menu acessível (foco controlado, fecha com Escape).
  */
 export function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Fecha com Escape e devolve o foco ao botão que abriu o menu.
   useEffect(() => {
     if (!open) return;
 
@@ -29,8 +30,6 @@ export function Header() {
     }
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
-
-    // Move o foco para dentro do painel ao abrir.
     panelRef.current?.querySelector<HTMLElement>("a, button")?.focus();
 
     return () => {
@@ -45,16 +44,15 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-sand bg-cream/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-sand/80 bg-cream/90 backdrop-blur-md">
       <div className="container-site flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="Nós na Rua — página inicial">
           <Logo />
         </Link>
 
-        {/* Navegação desktop */}
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-7 lg:flex"
         >
           {navLinks.map((link) => (
             <Link
@@ -65,28 +63,29 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/doe" className="btn-primary min-h-[2.75rem] px-6 text-[0.9375rem]">
+          <Link
+            href="/doe"
+            className="btn-primary min-h-[2.75rem] px-6 text-[0.9375rem]"
+          >
             Doar agora
           </Link>
         </nav>
 
-        {/* Botão do menu no celular */}
         <button
           ref={toggleRef}
           type="button"
           onClick={() => setOpen(true)}
           aria-expanded={open}
           aria-controls="menu-mobile"
-          className="grid h-11 w-11 place-items-center rounded-full border border-brown/20 text-brown md:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full border border-brown/20 text-brown lg:hidden"
         >
           <MenuIcon className="h-6 w-6" />
           <span className="sr-only">Abrir menu</span>
         </button>
       </div>
 
-      {/* Painel do menu no celular */}
       {open && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div
             className="absolute inset-0 bg-ink/40"
             onClick={closeMenu}

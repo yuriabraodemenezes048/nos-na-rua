@@ -32,9 +32,11 @@ export const siteConfig = {
     /** Como a cidade aparece no site */
     label: "São José – Santa Catarina",
     shortLabel: "São José – SC",
-    /** Referência pública de atuação (sem endereço residencial) */
-    areaOfOperation:
-      "Atuação nas proximidades do Viaduto da Chico Mendes, em São José/SC.",
+    /** Região de atuação */
+    region: "Grande Florianópolis",
+    /** Referência pública da ação semanal (sem endereço residencial) */
+    weeklyReference:
+      "Proximidades do Viaduto da Chico Mendes, em São José/SC.",
   },
 
   contact: {
@@ -65,23 +67,59 @@ export const siteConfig = {
     qrCodeImage: null as string | null,
   },
 
+  /** Impacto confirmado — não adicionar números além destes. */
+  impact: {
+    mealsPerWeek: "≈ 100",
+    mealsLabel: "refeições por semana",
+    day: "Toda segunda-feira",
+    time: "a partir das 19h30",
+    sinceYear: "2021",
+  },
+
   /**
-   * Logotipo oficial.
-   * Assim que o arquivo da marca for enviado, coloque-o em /public e
-   * informe o caminho aqui (ex.: "/logo-nos-na-rua.png"). Enquanto for null,
-   * o site exibe a assinatura tipográfica da associação.
+   * Logotipo oficial (arte da mandala "Nós na Rua"), extraído da identidade
+   * da associação. Usado no cabeçalho e no rodapé.
    */
-  logo: null as string | null,
+  logo: "/logo-nos-na-rua.png",
+
+  /**
+   * Personagens ilustrados da marca. São personagens institucionais —
+   * não representam pessoas reais, voluntários específicos ou beneficiários.
+   */
+  characters: {
+    /** Mulher de blazer com pasta — olha para a direita. Tom institucional. */
+    blazer: {
+      src: "/personagens/personagem-blazer.png",
+      alt: "Ilustração de uma mulher de blazer segurando uma pasta, personagem da identidade da Nós na Rua.",
+      width: 250,
+      height: 520,
+    },
+    /** Homem de gorro com caixa de doações — olha para a esquerda. */
+    box: {
+      src: "/personagens/personagem-caixa.png",
+      alt: "Ilustração de um jovem de gorro segurando uma caixa de doações, personagem da identidade da Nós na Rua.",
+      width: 378,
+      height: 515,
+    },
+  },
 } as const;
 
 /** Mensagens pré-preenchidas do WhatsApp, por contexto. */
 export const whatsappMessages = {
+  donation:
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar com uma doação.",
   items:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de saber quais itens a associação está recebendo.",
   volunteer:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como posso ajudar como voluntário(a).",
   partnership:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de conversar sobre uma possível parceria.",
+  weeklyMeals:
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar a manter a entrega semanal de marmitas.",
+  adoptFamily:
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de conhecer o projeto Adote uma Família.",
+  seasonal:
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar nas próximas ações sazonais.",
   receipt:
     "Olá! Fiz uma contribuição para a Associação Nós na Rua e gostaria de enviar o comprovante.",
   general:

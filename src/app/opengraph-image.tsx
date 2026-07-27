@@ -73,10 +73,10 @@ export default function OpengraphImage() {
               maxWidth: "940px",
             }}
           >
-            Sua ajuda pode levar dignidade a quem mais precisa.
+            Solidariedade que chega a quem precisa.
           </div>
           <div style={{ display: "flex", fontSize: "28px", color: "#5B5049" }}>
-            Associação registrada em São José – SC
+            Associação Nós na Rua · Grande Florianópolis
           </div>
         </div>
 

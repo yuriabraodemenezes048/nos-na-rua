@@ -18,7 +18,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Pular para o conteúdo
       </a>
       <Header />
-      <main id="conteudo" className="pb-24 md:pb-0">
+      <main id="conteudo" className="overflow-x-clip pb-24 lg:pb-0">
         {children}
       </main>
       <Footer />

@@ -1,32 +1,27 @@
 import { SiteShell } from "@/components/SiteShell";
-import { Hero } from "@/components/home/Hero";
-import { TrustStrip } from "@/components/home/TrustStrip";
-import { WorkAreas } from "@/components/home/WorkAreas";
-import { DonationJourney } from "@/components/home/DonationJourney";
-import { CurrentCampaign } from "@/components/home/CurrentCampaign";
-import { RealGallery } from "@/components/home/RealGallery";
-import { TransparencyPreview } from "@/components/home/TransparencyPreview";
+import { CharactersHero } from "@/components/home/CharactersHero";
 import { AboutSection } from "@/components/home/AboutSection";
-import { OtherWaysToHelp } from "@/components/home/OtherWaysToHelp";
+import { ImpactStrip } from "@/components/home/ImpactStrip";
+import { ProjectsSection } from "@/components/home/ProjectsSection";
+import { DonationWaysSection } from "@/components/home/DonationWaysSection";
+import { BusinessPartnershipSection } from "@/components/home/BusinessPartnershipSection";
+import { TransparencyPreview } from "@/components/home/TransparencyPreview";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
 /**
- * Página inicial.
- * `CurrentCampaign` e `RealGallery` só aparecem quando existem dados reais —
- * enquanto não houver, não renderizam nada.
+ * Página inicial — nova direção de arte com os personagens da marca.
+ * Fluxo: entender → confiar → como ajuda funciona → doar.
  */
 export default function HomePage() {
   return (
     <SiteShell>
-      <Hero />
-      <TrustStrip />
-      <WorkAreas />
-      <DonationJourney />
-      <CurrentCampaign />
-      <RealGallery />
-      <TransparencyPreview />
+      <CharactersHero />
       <AboutSection />
-      <OtherWaysToHelp />
+      <ImpactStrip />
+      <ProjectsSection />
+      <DonationWaysSection />
+      <BusinessPartnershipSection />
+      <TransparencyPreview />
       <FinalCTA />
     </SiteShell>
   );
