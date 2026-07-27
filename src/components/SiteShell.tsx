@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileActionBar } from "@/components/MobileActionBar";
+import { ScrollMorphLogo } from "@/components/ScrollMorphLogo";
 
 /**
  * Estrutura comum a todas as páginas: cabeçalho, conteúdo, rodapé e a barra
@@ -18,6 +19,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Pular para o conteúdo
       </a>
       <Header />
+      <ScrollMorphLogo />
       <main id="conteudo" className="overflow-x-clip pb-24 lg:pb-0">
         {children}
       </main>
