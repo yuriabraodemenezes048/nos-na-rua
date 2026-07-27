@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { Character } from "@/components/Character";
 import { LeafSprig, Sparkline } from "@/components/brand/Decor";
+import { siteConfig } from "@/data/site";
 
 /**
  * Quem somos — narrativa institucional humana, com um personagem como apoio
@@ -34,8 +35,16 @@ export function AboutSection() {
               dignidade e novas oportunidades.
             </p>
           </div>
-          <p className="mt-8 border-l-2 border-terracotta pl-5 font-display text-xl leading-snug text-brown">
-            Transformamos solidariedade em cuidado, dignidade e oportunidades.
+          <div className="mt-8 rounded-2xl bg-sand/60 p-5">
+            <p className="text-[0.8125rem] font-semibold uppercase tracking-wide text-brown">
+              Nossa missão
+            </p>
+            <p className="mt-2 max-w-prose leading-relaxed text-ink">
+              {siteConfig.mission.short}
+            </p>
+          </div>
+          <p className="mt-6 border-l-2 border-terracotta pl-5 font-display text-xl leading-snug text-brown">
+            {siteConfig.mission.positioning}
           </p>
         </Reveal>
 

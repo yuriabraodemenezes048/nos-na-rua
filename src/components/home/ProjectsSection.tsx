@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Character } from "@/components/Character";
 import { LeafSprig } from "@/components/brand/Decor";
-import { WhatsAppIcon } from "@/components/Icons";
+import { WhatsAppIcon, CheckIcon } from "@/components/Icons";
 import { projects } from "@/data/projects";
 import { whatsappUrl, siteConfig } from "@/data/site";
 
@@ -16,9 +17,11 @@ export function ProjectsSection() {
       <div className="container-site">
         <Reveal className="max-w-2xl">
           <p className="kicker">Nossos projetos</p>
-          <h2 className="section-title mt-4">
-            O trabalho que acontece na prática
-          </h2>
+          <h2 className="section-title mt-4">Amor transformado em ação</h2>
+          <p className="section-lead mt-4">
+            Conheça algumas das iniciativas que fazem parte do trabalho contínuo
+            da Nós na Rua.
+          </p>
         </Reveal>
 
         <div className="mt-14 flex flex-col gap-16 sm:gap-24">
@@ -44,19 +47,42 @@ export function ProjectsSection() {
                       <p key={p}>{p}</p>
                     ))}
                   </div>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    {project.actions.map((action) => (
-                      <a
-                        key={action.label}
-                        href={whatsappUrl(action.message)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={action.primary ? "btn-primary" : "btn-secondary"}
+
+                  <ul className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                    {project.details.map((detail) => (
+                      <li
+                        key={detail}
+                        className="flex items-start gap-2 text-[0.9375rem] text-ink"
                       >
-                        {action.primary && <WhatsAppIcon className="h-5 w-5" />}
-                        {action.label}
-                      </a>
+                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brown" />
+                        {detail}
+                      </li>
                     ))}
+                  </ul>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {project.actions.map((action) =>
+                      action.href ? (
+                        <Link
+                          key={action.label}
+                          href={action.href}
+                          className={action.primary ? "btn-primary" : "btn-secondary"}
+                        >
+                          {action.label}
+                        </Link>
+                      ) : (
+                        <a
+                          key={action.label}
+                          href={whatsappUrl(action.message)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={action.primary ? "btn-primary" : "btn-secondary"}
+                        >
+                          {action.primary && <WhatsAppIcon className="h-5 w-5" />}
+                          {action.label}
+                        </a>
+                      ),
+                    )}
                   </div>
                 </Reveal>
 

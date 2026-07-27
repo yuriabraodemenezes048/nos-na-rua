@@ -6,6 +6,7 @@ import { Logo } from "@/components/Logo";
 import { MenuIcon, CloseIcon } from "@/components/Icons";
 
 const navLinks = [
+  { href: "/", label: "Início" },
   { href: "/#quem-somos", label: "Quem somos" },
   { href: "/#projetos", label: "Projetos" },
   { href: "/#como-ajudar", label: "Como ajudar" },
@@ -52,7 +53,7 @@ export function Header() {
 
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-6 lg:flex"
         >
           {navLinks.map((link) => (
             <Link

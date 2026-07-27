@@ -20,8 +20,8 @@ export function Logo({
       <Image
         src={siteConfig.logo}
         alt={siteConfig.legalName}
-        width={203}
-        height={227}
+        width={480}
+        height={541}
         priority={!isFooter}
         className={`w-auto ${isFooter ? "h-16" : "h-11"} ${className}`}
       />

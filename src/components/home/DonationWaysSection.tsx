@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { Character } from "@/components/Character";
 import { ArrowRightIcon, WhatsAppIcon } from "@/components/Icons";
 import { whatsappUrl, whatsappMessages } from "@/data/site";
 
@@ -43,16 +44,25 @@ export function DonationWaysSection() {
   return (
     <section id="como-ajudar" className="section bg-sand/50">
       <div className="container-site">
-        <Reveal className="max-w-2xl">
-          <p className="kicker">Como ajudar</p>
-          <h2 className="section-title mt-4">Você também pode fazer parte</h2>
-          <p className="section-lead mt-4">
-            A transformação acontece quando cada pessoa contribui da maneira que
-            pode.
-          </p>
-        </Reveal>
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <Reveal className="max-w-2xl">
+            <p className="kicker">Como ajudar</p>
+            <h2 className="section-title mt-4">Você também pode fazer parte</h2>
+            <p className="section-lead mt-4">
+              A transformação acontece quando cada pessoa contribui da maneira
+              que pode.
+            </p>
+          </Reveal>
+          <Reveal
+            variant="right"
+            delay={120}
+            className="mx-auto hidden w-40 lg:block"
+          >
+            <Character who="box" tone="cream" float objectPosition="center top" />
+          </Reveal>
+        </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
           {ways.map((way, i) => (
             <Reveal
               key={way.title}

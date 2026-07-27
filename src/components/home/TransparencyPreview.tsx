@@ -15,12 +15,11 @@ export function TransparencyPreview() {
           />
           <p className="kicker">Transparência</p>
           <h2 className="section-title mt-4">
-            Transparência em cada contribuição
+            Confiança se constrói com clareza
           </h2>
           <p className="section-lead mt-4">
-            Queremos que doadores, voluntários e parceiros possam acompanhar
-            como as ações são realizadas e quais resultados foram publicados
-            pela associação.
+            As doações recebidas são destinadas à manutenção das ações semanais
+            e à compra de materiais necessários para os projetos ativos.
           </p>
 
           <div className="mt-6 text-[0.9375rem] text-muted">

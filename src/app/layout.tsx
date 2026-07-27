@@ -20,11 +20,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Nós na Rua | Associação em São José – SC",
+    default: "Nós na Rua | Solidariedade em ação na Grande Florianópolis",
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
+    "A Associação Nós na Rua realiza entrega semanal de refeições, apoio contínuo a famílias e ações comunitárias na Grande Florianópolis.",
   applicationName: siteConfig.name,
   alternates: { canonical: "/" },
   openGraph: {
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteConfig.url,
     siteName: siteConfig.legalName,
-    title: "Nós na Rua | Associação em São José – SC",
+    title: "Nós na Rua | Solidariedade em ação na Grande Florianópolis",
     description:
-      "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
+      "A Associação Nós na Rua realiza entrega semanal de refeições, apoio contínuo a famílias e ações comunitárias na Grande Florianópolis.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nós na Rua | Associação em São José – SC",
+    title: "Nós na Rua | Solidariedade em ação na Grande Florianópolis",
     description:
-      "A Associação Nós na Rua mobiliza doações, voluntários e parceiros para apoiar pessoas em situação de rua e famílias em vulnerabilidade social em São José, Santa Catarina.",
+      "A Associação Nós na Rua realiza entrega semanal de refeições, apoio contínuo a famílias e ações comunitárias na Grande Florianópolis.",
   },
   robots: { index: true, follow: true },
 };

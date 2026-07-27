@@ -1,54 +1,60 @@
-# Conteúdos pendentes — Nós na Rua
+# Conteúdos pendentes — Associação Nós na Rua
 
-Arquivo **interno**. Não é publicado no site.
+Arquivo **interno**. Não é publicado no site. As seções sem dados reais ficam
+ocultas (não renderizam) — nunca com placeholder público.
 
-Enquanto os itens abaixo não forem recebidos, as áreas correspondentes ficam
-desativadas por dados (não renderizam) — nunca com texto provisório.
+## 🔴 Urgentes antes da publicação definitiva
 
-## Já resolvido
+- **URGENTE: confirmar o WhatsApp oficial completo.** O site usa
+  `+55 48 99135-3909`. Números informados antes — `(48) 9957-3580` e
+  `(48) 9135-3909` — parecem incompletos. O número está centralizado em
+  `src/data/site.ts` (`contact.whatsapp`).
+- Confirmar qual número recebe os comprovantes.
+- Confirmar a **missão institucional final** com a diretoria (hoje há um texto
+  provisório aprovado em `siteConfig.mission`).
+- Confirmar se **todas as fotografias** possuem autorização de uso no site
+  (inclusive com rostos desfocados) — ver `IMAGE_INVENTORY.md`.
+- Receber **QR Code** ou payload PIX oficial (`siteConfig.donation.qrCodeImage`).
+- Confirmar **local público** para entrega de doações (o endereço cadastral é
+  residencial e **não** é divulgado).
 
-- [x] **Logotipo oficial** extraído da identidade e aplicado no cabeçalho e
-      rodapé (`public/logo-nos-na-rua.png`).
-- [x] **Personagens ilustrados** da marca aplicados no site
-      (`public/personagens/`): mulher de blazer e homem com caixa de doações.
+## Institucionais
 
-## Marca e arquivos
+- Nomes e cargos da diretoria.
+- História pessoal da fundação e nome dos fundadores.
+- Data real de início das ações (caso anterior ao CNPJ).
+- Versão final da missão, visão e valores aprovados.
 
-- [ ] Se houver versões vetoriais/maior resolução do logo e dos personagens,
-      substituir os arquivos em `/public` (mesmos nomes) para nitidez extra.
-- [ ] Receber **QR Code PIX oficial** (ou o payload PIX validado). Coloque em
-      `/public` e informe em `siteConfig.donation.qrCodeImage`. Sem ele, o bloco
-      de QR Code simplesmente não aparece.
+## Projetos
 
-## Contato e dados
+- Número atual de famílias do Adote uma Família e como é feito o cadastro.
+- Como funciona o apadrinhamento.
+- Quais cozinhas comunitárias colaboram.
+- Detalhes de mutirões de higiene e ações de ressocialização.
+- Calendário das próximas ações e campanha prioritária atual.
 
-- [ ] Confirmar o **segundo número de WhatsApp** — o valor informado como
-      "(48) 9957-3580" está com a quantidade de dígitos incompleta e por isso
-      não foi publicado.
-- [ ] Confirmar o **local oficial para entrega de doações**. O endereço
-      cadastral é residencial e **não** está publicado no site.
+## Transparência
 
-## Textos institucionais
+- Relatórios, extratos/resumos, notas fiscais e comprovantes.
+- Totais arrecadados e utilizados; resultados por campanha.
+- Política sobre custos administrativos e logísticos.
+- Confirmação documental antes de publicar qualquer frase como
+  "100% das doações".
+- Preencher `src/data/transparency.ts` (a página mostra estado vazio honesto).
 
-- [ ] Receber **nomes e cargos dos responsáveis** (se/quando for divulgar).
-- [ ] Receber informações detalhadas sobre **voluntariado** e **parcerias**,
-      caso queiram uma explicação mais completa no site.
+## Comunicação e imagens
 
-## Conteúdo variável
-
-- [ ] Receber **fotos reais e autorizadas** das ações para uso pontual em
-      seções estratégicas (confirmar quais imagens podem mostrar pessoas
-      atendidas e se há autorização de uso de imagem).
-- [ ] Receber **números de impacto adicionais confirmados** (hoje o site usa
-      apenas os confirmados: ≈100 refeições/semana, segundas às 19h30,
-      registrada desde 2021, atuação na Grande Florianópolis).
-- [ ] Receber **prestações de contas** e **documentos autorizados**. Preencher
-      `src/data/transparency.ts`. A página exibe um estado vazio honesto até lá.
+- Fotografias das marmitas e da equipe; mais registros autorizados para a galeria.
+- Autorizações de imagem das pessoas retratadas.
+- Logos de parceiros autorizados; depoimentos autorizados; vídeos.
+- Ponto oficial para coleta de doações.
 
 ## Onde editar
 
 | Conteúdo | Arquivo |
 | --- | --- |
-| Dados institucionais, contato, PIX, logo, personagens | `src/data/site.ts` |
-| Projetos (marmitas, Adote uma Família, ações sazonais) | `src/data/projects.ts` |
-| Relatórios e prestação de contas | `src/data/transparency.ts` |
+| Dados institucionais, contato, PIX, missão, logo, personagens | `src/data/site.ts` |
+| Projetos | `src/data/projects.ts` |
+| Necessidades de doação | `src/data/donations.ts` |
+| Galeria de fotos | `src/data/gallery.ts` |
+| Relatórios de transparência | `src/data/transparency.ts` |

@@ -10,12 +10,12 @@ import { transparencyReports } from "@/data/transparency";
 export const metadata: Metadata = {
   title: "Transparência | Associação Nós na Rua",
   description:
-    "Acompanhe informações institucionais, resultados e prestações de contas da Associação Nós na Rua – São José.",
+    "Consulte os dados institucionais e acompanhe as prestações de contas da Associação Nós na Rua – São José.",
   alternates: { canonical: "/transparencia" },
   openGraph: {
     title: "Transparência | Associação Nós na Rua",
     description:
-      "Acompanhe informações institucionais, resultados e prestações de contas da Associação Nós na Rua – São José.",
+      "Consulte os dados institucionais e acompanhe as prestações de contas da Associação Nós na Rua – São José.",
     url: "/transparencia",
   },
 };
@@ -46,8 +46,8 @@ export default function TransparencyPage() {
               Transparência
             </h1>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
-              A Associação Nós na Rua acredita que a confiança é construída com
-              clareza. Nesta página serão publicados os resultados, documentos e
+              A confiança de quem apoia é parte essencial do nosso trabalho.
+              Nesta página serão publicados os resultados, documentos e
               prestações de contas aprovados pela associação.
             </p>
             <p className="mt-4 max-w-prose leading-relaxed text-muted">

@@ -9,6 +9,9 @@ export const siteConfig = {
   /** Nome público / marca */
   name: "Nós na Rua",
 
+  /** Sigla */
+  acronym: "NNR",
+
   /** Razão social completa */
   legalName: "Associação Nós na Rua – São José",
 
@@ -77,6 +80,20 @@ export const siteConfig = {
   },
 
   /**
+   * Missão e posicionamento.
+   * A missão oficial ainda está em revisão pela diretoria (ver
+   * CONTENT_PENDING.md) — o texto abaixo é provisório e aprovado para uso.
+   */
+  mission: {
+    full: "Promover assistência, inclusão e defesa de direitos para pessoas e famílias em situação de vulnerabilidade, fortalecendo sua dignidade, autonomia e cidadania.",
+    short:
+      "Promover assistência, inclusão e defesa de direitos, fortalecendo dignidade, autonomia e cidadania.",
+    positioning:
+      "Transformamos solidariedade em cuidado, dignidade e oportunidades.",
+    campaign: "Solidariedade que chega a quem precisa.",
+  },
+
+  /**
    * Logotipo oficial (arte da mandala "Nós na Rua"), extraído da identidade
    * da associação. Usado no cabeçalho e no rodapé.
    */
@@ -109,15 +126,17 @@ export const whatsappMessages = {
   donation:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar com uma doação.",
   items:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber quais itens a associação está recebendo.",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber quais itens posso doar.",
   volunteer:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como posso ajudar como voluntário(a).",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como posso participar como voluntário(a).",
   partnership:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de conversar sobre uma possível parceria.",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de conversar sobre uma parceria com a minha empresa.",
+  needs:
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de combinar uma doação de itens.",
   weeklyMeals:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar a manter a entrega semanal de marmitas.",
   adoptFamily:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de conhecer o projeto Adote uma Família.",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de apoiar uma família pelo projeto Adote uma Família.",
   seasonal:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar nas próximas ações sazonais.",
   receipt:

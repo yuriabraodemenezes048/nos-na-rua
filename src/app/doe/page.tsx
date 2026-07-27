@@ -8,14 +8,14 @@ import { WhatsAppIcon } from "@/components/Icons";
 import { siteConfig, whatsappUrl, whatsappMessages } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Doe para a Nós na Rua | PIX oficial",
+  title: "Doe para a Associação Nós na Rua | PIX oficial",
   description:
-    "Contribua com a Associação Nós na Rua por meio do PIX oficial e ajude a fortalecer ações realizadas em São José – SC.",
+    "Doe pelo PIX oficial e ajude a manter a entrega de refeições, o apoio às famílias e as ações da Associação Nós na Rua.",
   alternates: { canonical: "/doe" },
   openGraph: {
-    title: "Doe para a Nós na Rua | PIX oficial",
+    title: "Doe para a Associação Nós na Rua | PIX oficial",
     description:
-      "Contribua com a Associação Nós na Rua por meio do PIX oficial e ajude a fortalecer ações realizadas em São José – SC.",
+      "Doe pelo PIX oficial e ajude a manter a entrega de refeições, o apoio às famílias e as ações da Associação Nós na Rua.",
     url: "/doe",
   },
 };
@@ -39,12 +39,11 @@ export default function DonatePage() {
           <div>
             <p className="kicker">Doe agora</p>
             <h1 className="mt-4 font-display text-[2.25rem] leading-[1.05] sm:text-[2.75rem]">
-              Faça sua doação
+              Transforme solidariedade em ação
             </h1>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
-              Sua contribuição ajuda a fortalecer as ações realizadas pela
-              Associação Nós na Rua. Cada valor vira alimento, cuidado e
-              presença.
+              Sua contribuição ajuda a manter a entrega semanal de refeições, o
+              apoio às famílias e as ações comunitárias.
             </p>
           </div>
           <div className="mx-auto hidden w-full max-w-[13rem] sm:block">
