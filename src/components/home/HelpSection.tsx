@@ -80,12 +80,12 @@ export function HelpSection() {
               </a>
             </div>
 
-            {/* Personagem com caixa, apoio visual */}
+            {/* Personagem com caixa, apoio visual em tamanho grande */}
             <Character
               who="box"
               tone="sand"
-              className="pointer-events-none absolute -bottom-4 right-2 hidden w-24 sm:block"
-              sizes="96px"
+              className="pointer-events-none absolute -bottom-4 -right-2 hidden w-36 sm:block lg:w-44"
+              sizes="176px"
             />
           </Reveal>
         </div>
@@ -128,8 +128,8 @@ export function HelpSection() {
             <Character
               who="blazer"
               tone="sand"
-              className="pointer-events-none absolute -bottom-3 right-1 hidden w-20 sm:block"
-              sizes="80px"
+              className="pointer-events-none absolute -bottom-3 -right-1 hidden w-28 sm:block lg:w-32"
+              sizes="128px"
             />
           </Reveal>
         </div>

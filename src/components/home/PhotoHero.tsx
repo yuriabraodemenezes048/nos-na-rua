@@ -7,10 +7,11 @@ import { ArrowRightIcon } from "@/components/Icons";
 import { siteConfig } from "@/data/site";
 
 /**
- * Hero editorial — foto real grande ao lado de um bloco de conteúdo sólido
- * (fundo Branco Quente). O texto NUNCA fica sobre a fotografia, o que garante
- * contraste estável em qualquer recorte. No celular, a foto vem primeiro e o
- * conteúdo aparece abaixo, em fundo sólido. Não usa 100vh.
+ * Hero fotográfico em tela cheia — a foto real da ação na Tapera preenche
+ * toda a largura e a maior parte da viewport, como a abertura de um
+ * documentário. O texto fica sobre a imagem com um degradê escuro que garante
+ * contraste WCAG AA. Zoom inicial quase imperceptível (desativado sob
+ * prefers-reduced-motion).
  */
 export function PhotoHero() {
   const [loaded, setLoaded] = useState(false);
@@ -22,59 +23,65 @@ export function PhotoHero() {
 
   return (
     <section
-      className="section pt-8 sm:pt-10 lg:pt-0"
+      className="relative isolate flex min-h-[88svh] w-full items-end overflow-hidden"
       aria-labelledby="hero-title"
     >
-      <div className="container-site lg:grid lg:min-h-[80vh] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-stretch lg:gap-12">
-        {/* Foto real (primeiro no celular) */}
-        <figure className="order-1 overflow-hidden rounded-3xl border border-sand shadow-soft lg:order-2">
-          <Image
-            src="/acoes/tapera-acao.webp"
-            alt="Ação comunitária da Associação Nós na Rua na Tapera, com roupas, calçados, voluntários e famílias reunidas."
-            width={1672}
-            height={941}
-            priority
-            sizes="(max-width: 1024px) 100vw, 60vw"
-            className={`h-[280px] w-full object-cover transition-transform duration-[1200ms] ease-out will-change-transform sm:h-[380px] lg:h-full motion-reduce:transition-none motion-reduce:transform-none ${
-              loaded ? "scale-100" : "scale-[1.04]"
-            }`}
-            style={{ objectPosition: "center 45%" }}
-          />
-        </figure>
+      <Image
+        src="/acoes/tapera-acao.webp"
+        alt="Ação comunitária da Associação Nós na Rua na Tapera, com roupas, calçados, voluntários e famílias reunidas."
+        fill
+        priority
+        sizes="100vw"
+        className={`object-cover transition-transform duration-[1400ms] ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none ${
+          loaded ? "scale-100" : "scale-[1.06]"
+        }`}
+        style={{ objectPosition: "center 42%" }}
+      />
+      {/* Degradês: escuro embaixo e à esquerda, onde fica o texto */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-t from-brown-dark/92 via-brown-dark/35 to-brown-dark/10"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-r from-brown-dark/70 via-brown-dark/20 to-transparent"
+      />
 
-        {/* Bloco de conteúdo sólido */}
+      <div className="container-site relative z-10 w-full pb-28 pt-16 sm:pb-20 lg:pb-24">
         <div
-          className={`order-2 flex flex-col justify-center pt-8 transition-all duration-700 ease-out motion-reduce:transition-none lg:order-1 lg:pt-0 ${
-            loaded ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          className={`max-w-2xl transition-all duration-700 ease-out motion-reduce:transition-none ${
+            loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           } motion-reduce:translate-y-0 motion-reduce:opacity-100`}
         >
-          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-brown">
+          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#F0C6B6]">
             Associação Nós na Rua · {siteConfig.location.shortLabel}
           </p>
           <h1
             id="hero-title"
-            className="mt-4 font-display text-[2.25rem] leading-[1.05] text-ink sm:text-[2.75rem] lg:text-[3.25rem]"
+            className="mt-4 font-display text-[2.5rem] leading-[1.03] text-cream sm:text-[3.25rem] lg:text-[4rem]"
           >
             Solidariedade que chega a quem precisa.
           </h1>
-          <p className="mt-5 max-w-prose text-lg leading-relaxed text-muted">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand">
             Mobilizamos pessoas, doações e parcerias para apoiar pessoas e
             famílias em situação de vulnerabilidade na {siteConfig.location.region}.
           </p>
-
-          <p className="mt-6 inline-flex w-fit items-start gap-3 rounded-2xl bg-sand px-5 py-3 text-[0.95rem] font-medium text-ink">
+          <p className="mt-5 text-[0.95rem] font-medium text-white">
             <span
-              aria-hidden="true"
-              className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-terracotta"
+              aria-hidden
+              className="mr-2 inline-block h-2.5 w-2.5 -translate-y-px rounded-full bg-terracotta align-middle"
             />
             Aproximadamente 100 refeições distribuídas toda segunda-feira.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href="/doe" className="btn-primary w-full sm:w-auto">
+            <Link href="/doe" className="btn-on-brown w-full sm:w-auto">
               Doar agora
             </Link>
-            <a href="#projetos" className="btn-secondary w-full sm:w-auto">
+            <a
+              href="#projetos"
+              className="inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-full border border-white/60 px-7 text-base font-semibold text-white transition-colors hover:bg-white/10 sm:w-auto"
+            >
               Conheça nossas ações
               <ArrowRightIcon className="h-5 w-5" />
             </a>

@@ -1,24 +1,24 @@
 import { SiteShell } from "@/components/SiteShell";
 import { PhotoHero } from "@/components/home/PhotoHero";
-import { AboutImpact } from "@/components/home/AboutImpact";
+import { QuemSomos } from "@/components/home/QuemSomos";
+import { EquipeBand } from "@/components/home/EquipeBand";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
-import { PhotoStrip } from "@/components/home/PhotoStrip";
 import { HelpSection } from "@/components/home/HelpSection";
 import { TransparencyPreview } from "@/components/home/TransparencyPreview";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
 /**
- * Página inicial — seis blocos: hero fotográfico, quem somos + impacto,
- * projetos reais (+ faixa fotográfica curta), como ajudar, transparência e
- * chamada final. Jornada: ver o trabalho → confiar → como ajudar → doar.
+ * Página inicial — narrativa fotográfica: hero em tela cheia, quem somos,
+ * foto da equipe em largura total, projetos como capítulos fotográficos,
+ * como ajudar (identidade + personagens), transparência e chamada final.
  */
 export default function HomePage() {
   return (
     <SiteShell>
       <PhotoHero />
-      <AboutImpact />
+      <QuemSomos />
+      <EquipeBand />
       <ProjectsSection />
-      <PhotoStrip />
       <HelpSection />
       <TransparencyPreview />
       <FinalCTA />
