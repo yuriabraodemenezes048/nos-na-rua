@@ -2,8 +2,8 @@ import { whatsappMessages } from "@/data/site";
 
 /**
  * Projetos reais da associação — blocos editoriais na página inicial.
- * Conteúdo oficial confirmado. Nenhum número foi adicionado além dos já
- * confirmados (≈100 refeições por semana, segundas às 19h30).
+ * Conteúdo oficial confirmado. Cada projeto tem uma foto grande, um parágrafo
+ * curto, no máximo três informações práticas e um único CTA.
  */
 
 export type ProjectImage = { src: string; alt: string; width: number; height: number };
@@ -12,35 +12,23 @@ export type Project = {
   id: string;
   kicker: string;
   title: string;
-  paragraphs: string[];
-  /** Detalhes concretos, exibidos como lista */
-  details: string[];
-  /** Fotografias reais do projeto (1 ou 2). Quando ausente, usa grafismo. */
-  images?: ProjectImage[];
-  /** Ações — cada uma vira um botão (interno ou WhatsApp) */
-  actions: {
-    label: string;
-    href?: string;
-    message?: string;
-    primary?: boolean;
-  }[];
+  /** Um parágrafo curto */
+  text: string;
+  /** No máximo três informações práticas */
+  facts: string[];
+  /** Fotografias reais do projeto (1 ou 2). */
+  images: ProjectImage[];
+  /** CTA único */
+  cta: { label: string; href?: string; message?: string };
 };
 
 export const projects: Project[] = [
   {
     id: "marmitas",
-    kicker: "Todas as segundas-feiras",
+    kicker: "Toda segunda-feira",
     title: "Alimento, conversa e acolhimento",
-    paragraphs: [
-      "Todas as segundas-feiras, a partir das 19h30, a Nós na Rua distribui aproximadamente 100 refeições nas proximidades do Viaduto da Chico Mendes.",
-      "A ação vai além da alimentação. Cada encontro também abre espaço para conversa, escuta e acolhimento.",
-    ],
-    details: [
-      "Aproximadamente 100 refeições",
-      "Segundas-feiras, a partir das 19h30",
-      "Apoio de cozinhas comunitárias",
-      "Proximidades do Viaduto da Chico Mendes",
-    ],
+    text: "Todas as segundas-feiras, a partir das 19h30, a Nós na Rua distribui aproximadamente 100 refeições nas proximidades do Viaduto da Chico Mendes. A ação também cria espaço para conversa, escuta e acolhimento.",
+    facts: ["≈ 100 refeições", "Segundas, às 19h30", "Viaduto da Chico Mendes"],
     images: [
       {
         src: "/acoes/marmita-entrega.webp",
@@ -55,25 +43,14 @@ export const projects: Project[] = [
         height: 1536,
       },
     ],
-    actions: [
-      { label: "Ajude a manter essa ação", href: "/doe", primary: true },
-      { label: "Quero colaborar", message: whatsappMessages.volunteer },
-    ],
+    cta: { label: "Ajude essa ação", href: "/doe" },
   },
   {
     id: "adote-uma-familia",
     kicker: "Assistência contínua",
     title: "Apoio para reconstruir caminhos",
-    paragraphs: [
-      "O Projeto Adote uma Família conecta solidariedade e acompanhamento contínuo.",
-      "Famílias cadastradas na Grande Florianópolis recebem apoio de acordo com suas necessidades, incluindo alimentos, roupas, itens domésticos, materiais escolares e orientação para o acesso a direitos e serviços essenciais.",
-    ],
-    details: [
-      "Alimentos e itens domésticos",
-      "Roupas e materiais escolares",
-      "Orientação para acesso a direitos e serviços",
-      "Acompanhamento contínuo",
-    ],
+    text: "O Projeto Adote uma Família promove apoio mensal a famílias cadastradas na Grande Florianópolis, incluindo alimentos, roupas, itens domésticos, materiais escolares e orientação para acesso a direitos.",
+    facts: ["Apoio mensal", "Famílias cadastradas", "Necessidades essenciais"],
     images: [
       {
         src: "/acoes/tapera-familias.webp",
@@ -82,43 +59,22 @@ export const projects: Project[] = [
         height: 210,
       },
     ],
-    actions: [
-      {
-        label: "Quero apoiar uma família",
-        message: whatsappMessages.adoptFamily,
-        primary: true,
-      },
-    ],
+    cta: { label: "Quero apoiar uma família", message: whatsappMessages.adoptFamily },
   },
   {
     id: "acoes-sazonais",
     kicker: "Páscoa · Dia das Crianças · Natal",
     title: "Datas especiais também são feitas de presença",
-    paragraphs: [
-      "Durante o ano, a Nós na Rua realiza ações especiais na comunidade da Tapera.",
-      "Criamos momentos de convivência, recreação e celebração para crianças e famílias da comunidade.",
-    ],
-    details: [
-      "Recreação infantil",
-      "Brinquedos infláveis",
-      "Pintura facial",
-      "Distribuição de doces",
-      "Integração comunitária",
-    ],
+    text: "Ao longo do ano, a Nós na Rua realiza ações na comunidade da Tapera, criando momentos de convivência, recreação e celebração para crianças e famílias.",
+    facts: ["Recreação", "Integração", "Campanhas sazonais"],
     images: [
       {
-        src: "/acoes/tapera-roupas.webp",
-        alt: "Roupas doadas organizadas durante ação comunitária da Associação Nós na Rua na Tapera.",
-        width: 345,
+        src: "/acoes/tapera-calcados.webp",
+        alt: "Roupas e calçados doados organizados durante ação comunitária da Nós na Rua na Tapera.",
+        width: 545,
         height: 300,
       },
     ],
-    actions: [
-      {
-        label: "Ajude nas próximas ações",
-        message: whatsappMessages.seasonal,
-        primary: true,
-      },
-    ],
+    cta: { label: "Ajude nas próximas ações", message: whatsappMessages.seasonal },
   },
 ];

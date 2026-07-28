@@ -1,31 +1,25 @@
 import { SiteShell } from "@/components/SiteShell";
 import { PhotoHero } from "@/components/home/PhotoHero";
-import { ImpactStrip } from "@/components/home/ImpactStrip";
-import { AboutSection } from "@/components/home/AboutSection";
+import { AboutImpact } from "@/components/home/AboutImpact";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
-import { RealGallery } from "@/components/home/RealGallery";
-import { DonationWaysSection } from "@/components/home/DonationWaysSection";
-import { DonationNeeds } from "@/components/home/DonationNeeds";
-import { BusinessPartnershipSection } from "@/components/home/BusinessPartnershipSection";
+import { PhotoStrip } from "@/components/home/PhotoStrip";
+import { HelpSection } from "@/components/home/HelpSection";
 import { TransparencyPreview } from "@/components/home/TransparencyPreview";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
 /**
- * Página inicial — hero fotográfico com registro real da ação, projetos
- * verdadeiros, galeria documental e os personagens da marca como apoio.
- * Jornada: conhecer → enxergar o trabalho → confiar → escolher como ajudar.
+ * Página inicial — seis blocos: hero fotográfico, quem somos + impacto,
+ * projetos reais (+ faixa fotográfica curta), como ajudar, transparência e
+ * chamada final. Jornada: ver o trabalho → confiar → como ajudar → doar.
  */
 export default function HomePage() {
   return (
     <SiteShell>
       <PhotoHero />
-      <ImpactStrip />
-      <AboutSection />
+      <AboutImpact />
       <ProjectsSection />
-      <RealGallery />
-      <DonationWaysSection />
-      <DonationNeeds />
-      <BusinessPartnershipSection />
+      <PhotoStrip />
+      <HelpSection />
       <TransparencyPreview />
       <FinalCTA />
     </SiteShell>

@@ -123,22 +123,16 @@ export const siteConfig = {
 
 /** Mensagens pré-preenchidas do WhatsApp, por contexto. */
 export const whatsappMessages = {
-  donation:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar com uma doação.",
   items:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber quais itens posso doar.",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de combinar uma doação de itens.",
   volunteer:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como posso participar como voluntário(a).",
+    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como participar como voluntário(a).",
   partnership:
     "Olá! Conheci a Nós na Rua pelo site e gostaria de conversar sobre uma parceria com a minha empresa.",
-  needs:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de combinar uma doação de itens.",
-  weeklyMeals:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar a manter a entrega semanal de marmitas.",
   adoptFamily:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de apoiar uma família pelo projeto Adote uma Família.",
+    "Olá! Conheci o Projeto Adote uma Família e gostaria de saber como posso apoiar.",
   seasonal:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de ajudar nas próximas ações sazonais.",
+    "Olá! Conheci as ações da Nós na Rua e gostaria de colaborar com as próximas campanhas.",
   receipt:
     "Olá! Fiz uma contribuição para a Associação Nós na Rua e gostaria de enviar o comprovante.",
   general:

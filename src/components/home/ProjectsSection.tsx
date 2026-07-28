@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { LeafSprig } from "@/components/brand/Decor";
-import { WhatsAppIcon, CheckIcon } from "@/components/Icons";
+import { WhatsAppIcon } from "@/components/Icons";
 import { projects, type Project } from "@/data/projects";
 import { whatsappUrl } from "@/data/site";
 
 /**
- * Projetos reais — blocos editoriais alternados com fotografias grandes.
- * O projeto de marmitas recebe uma composição com duas fotos (principal + apoio).
+ * Projetos reais — três blocos editoriais alternados, cada um com uma foto
+ * grande, um parágrafo curto, até três informações e um único CTA.
+ * O projeto de marmitas usa uma composição com duas fotos.
  */
 export function ProjectsSection() {
   return (
@@ -18,8 +18,8 @@ export function ProjectsSection() {
           <p className="kicker">Nossos projetos</p>
           <h2 className="section-title mt-4">Amor transformado em ação</h2>
           <p className="section-lead mt-4">
-            Conheça algumas das iniciativas que fazem parte do trabalho contínuo
-            da Nós na Rua.
+            Conheça as iniciativas que fazem parte do trabalho contínuo da Nós na
+            Rua.
           </p>
         </Reveal>
 
@@ -40,46 +40,36 @@ export function ProjectsSection() {
                   <h3 className="mt-3 font-display text-2xl leading-tight sm:text-[1.75rem]">
                     {project.title}
                   </h3>
-                  <div className="mt-4 max-w-prose space-y-3 leading-relaxed text-muted">
-                    {project.paragraphs.map((p) => (
-                      <p key={p}>{p}</p>
-                    ))}
-                  </div>
+                  <p className="mt-4 max-w-prose leading-relaxed text-muted">
+                    {project.text}
+                  </p>
 
-                  <ul className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                    {project.details.map((detail) => (
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {project.facts.map((fact) => (
                       <li
-                        key={detail}
-                        className="flex items-start gap-2 text-[0.9375rem] text-ink"
+                        key={fact}
+                        className="rounded-full bg-sand px-3.5 py-1.5 text-sm font-medium text-brown"
                       >
-                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brown" />
-                        {detail}
+                        {fact}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    {project.actions.map((action) =>
-                      action.href ? (
-                        <Link
-                          key={action.label}
-                          href={action.href}
-                          className={action.primary ? "btn-primary" : "btn-secondary"}
-                        >
-                          {action.label}
-                        </Link>
-                      ) : (
-                        <a
-                          key={action.label}
-                          href={whatsappUrl(action.message)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={action.primary ? "btn-primary" : "btn-secondary"}
-                        >
-                          {action.primary && <WhatsAppIcon className="h-5 w-5" />}
-                          {action.label}
-                        </a>
-                      ),
+                  <div className="mt-6">
+                    {project.cta.href ? (
+                      <Link href={project.cta.href} className="btn-primary">
+                        {project.cta.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={whatsappUrl(project.cta.message)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
+                      >
+                        <WhatsAppIcon className="h-5 w-5" />
+                        {project.cta.label}
+                      </a>
                     )}
                   </div>
                 </Reveal>
@@ -89,7 +79,7 @@ export function ProjectsSection() {
                   delay={120}
                   className={flipped ? "lg:order-1" : ""}
                 >
-                  <ProjectVisual project={project} index={index} />
+                  <ProjectVisual project={project} />
                 </Reveal>
               </article>
             );
@@ -100,11 +90,10 @@ export function ProjectsSection() {
   );
 }
 
-/** Bloco visual do projeto: 2 fotos (composição), 1 foto grande, ou grafismo. */
-function ProjectVisual({ project, index }: { project: Project; index: number }) {
-  const images = project.images ?? [];
+/** Foto do projeto: composição de duas fotos ou uma foto grande. */
+function ProjectVisual({ project }: { project: Project }) {
+  const images = project.images;
 
-  // Duas fotos — composição editorial (principal grande + apoio sobreposto)
   if (images.length >= 2) {
     return (
       <div className="relative">
@@ -134,36 +123,17 @@ function ProjectVisual({ project, index }: { project: Project; index: number }) 
     );
   }
 
-  // Uma foto grande
-  if (images.length === 1) {
-    return (
-      <figure className="overflow-hidden rounded-3xl border border-sand shadow-soft">
-        <Image
-          src={images[0].src}
-          alt={images[0].alt}
-          width={images[0].width}
-          height={images[0].height}
-          loading="lazy"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="aspect-[16/10] w-full object-cover"
-        />
-      </figure>
-    );
-  }
-
-  // Sem foto — grafismo da marca
   return (
-    <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl bg-sand">
-      <LeafSprig
-        aria-hidden="true"
-        className="absolute -bottom-4 -left-2 h-40 w-28 text-brown/15"
+    <figure className="overflow-hidden rounded-3xl border border-sand shadow-soft">
+      <Image
+        src={images[0].src}
+        alt={images[0].alt}
+        width={images[0].width}
+        height={images[0].height}
+        loading="lazy"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="aspect-[16/10] w-full object-cover"
       />
-      <span
-        aria-hidden="true"
-        className="font-display text-[8rem] font-semibold leading-none text-brown/25"
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-    </div>
+    </figure>
   );
 }

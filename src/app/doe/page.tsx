@@ -10,22 +10,20 @@ import { siteConfig, whatsappUrl, whatsappMessages } from "@/data/site";
 export const metadata: Metadata = {
   title: "Doe para a Associação Nós na Rua | PIX oficial",
   description:
-    "Doe pelo PIX oficial e ajude a manter a entrega de refeições, o apoio às famílias e as ações da Associação Nós na Rua.",
+    "Doe pelo PIX oficial e ajude a manter as ações da Associação Nós na Rua em São José e na Grande Florianópolis.",
   alternates: { canonical: "/doe" },
   openGraph: {
     title: "Doe para a Associação Nós na Rua | PIX oficial",
     description:
-      "Doe pelo PIX oficial e ajude a manter a entrega de refeições, o apoio às famílias e as ações da Associação Nós na Rua.",
+      "Doe pelo PIX oficial e ajude a manter as ações da Associação Nós na Rua em São José e na Grande Florianópolis.",
     url: "/doe",
   },
 };
 
 const steps = [
-  "Copie a chave PIX.",
-  "Abra o aplicativo do seu banco.",
-  "Escolha a opção PIX e cole a chave.",
-  "Confira o nome do destinatário.",
-  "Finalize a contribuição.",
+  "Copie a chave e abra o aplicativo do banco.",
+  "Escolha PIX e cole a chave.",
+  "Confira o destinatário e finalize.",
 ];
 
 export default function DonatePage() {

@@ -8,9 +8,12 @@ As fontes originais ficam em `C:/Users/yuria/Downloads`.
 ### Hero — ação na Tapera
 - **Origem:** `ChatGPT Image 27 de jul. de 2026, 16_14_13.png` (1672×941)
 - **Conteúdo:** ação comunitária na Tapera; **rostos desfocados na origem**.
-- **Uso:** hero em tela cheia (`/acoes/tapera-acao.webp`) e recortes de itens na
-  galeria/projetos (`tapera-calcados`, `tapera-roupas`, `tapera-familias`).
+- **Uso:** hero editorial (`/acoes/tapera-acao.webp`) e recortes de itens
+  (`tapera-calcados` → ações sazonais, `tapera-roupas` → faixa fotográfica,
+  `tapera-familias` → Adote uma Família).
 - **Decisão:** **USAR** (blur preservado).
+- **Pendência:** o Adote uma Família idealmente usaria uma foto de **entrega de
+  cesta básica** (ainda não disponível); por ora usa a foto dos banners.
 
 ### Equipe / voluntários
 - **Origem:** `equipe nos marmita.jpeg` (1536×1536)
