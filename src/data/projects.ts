@@ -6,6 +6,8 @@ import { whatsappMessages } from "@/data/site";
  * confirmados (≈100 refeições por semana, segundas às 19h30).
  */
 
+export type ProjectImage = { src: string; alt: string; width: number; height: number };
+
 export type Project = {
   id: string;
   kicker: string;
@@ -13,6 +15,8 @@ export type Project = {
   paragraphs: string[];
   /** Detalhes concretos, exibidos como lista */
   details: string[];
+  /** Fotografias reais do projeto (1 ou 2). Quando ausente, usa grafismo. */
+  images?: ProjectImage[];
   /** Ações — cada uma vira um botão (interno ou WhatsApp) */
   actions: {
     label: string;
@@ -37,6 +41,20 @@ export const projects: Project[] = [
       "Apoio de cozinhas comunitárias",
       "Proximidades do Viaduto da Chico Mendes",
     ],
+    images: [
+      {
+        src: "/acoes/marmita-entrega.webp",
+        alt: "Voluntária da Associação Nós na Rua entregando uma marmita durante ação noturna.",
+        width: 1536,
+        height: 1536,
+      },
+      {
+        src: "/acoes/marmita-caixa.webp",
+        alt: "Voluntária entregando marmita ao lado da caixa térmica com a identidade da Nós na Rua.",
+        width: 1536,
+        height: 1536,
+      },
+    ],
     actions: [
       { label: "Ajude a manter essa ação", href: "/doe", primary: true },
       { label: "Quero colaborar", message: whatsappMessages.volunteer },
@@ -55,6 +73,14 @@ export const projects: Project[] = [
       "Roupas e materiais escolares",
       "Orientação para acesso a direitos e serviços",
       "Acompanhamento contínuo",
+    ],
+    images: [
+      {
+        src: "/acoes/tapera-familias.webp",
+        alt: "Famílias reunidas junto aos banners da campanha Adote uma Família, com rostos preservados.",
+        width: 620,
+        height: 210,
+      },
     ],
     actions: [
       {
@@ -78,6 +104,14 @@ export const projects: Project[] = [
       "Pintura facial",
       "Distribuição de doces",
       "Integração comunitária",
+    ],
+    images: [
+      {
+        src: "/acoes/tapera-roupas.webp",
+        alt: "Roupas doadas organizadas durante ação comunitária da Associação Nós na Rua na Tapera.",
+        width: 345,
+        height: 300,
+      },
     ],
     actions: [
       {

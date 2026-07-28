@@ -1,20 +1,20 @@
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { Character } from "@/components/Character";
-import { LeafSprig, Sparkline } from "@/components/brand/Decor";
+import { Sparkline } from "@/components/brand/Decor";
 import { siteConfig } from "@/data/site";
 
 /**
- * Quem somos — narrativa institucional humana, com um personagem como apoio
- * visual discreto e a frase-síntese em destaque.
+ * Quem somos / Quem faz acontecer — narrativa institucional com a foto real
+ * da equipe em destaque, para gerar confiança e humanizar a associação.
  */
 export function AboutSection() {
   return (
     <section id="quem-somos" className="section relative overflow-hidden">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_0.8fr] lg:gap-16">
+      <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <p className="kicker">
             <Sparkline className="h-4 w-8" />
-            Quem somos
+            Quem faz acontecer
           </p>
           <h2 className="section-title mt-4 max-w-prose">
             Uma rede de pessoas cuidando de pessoas
@@ -43,17 +43,23 @@ export function AboutSection() {
               {siteConfig.mission.short}
             </p>
           </div>
-          <p className="mt-6 border-l-2 border-terracotta pl-5 font-display text-xl leading-snug text-brown">
-            {siteConfig.mission.positioning}
-          </p>
         </Reveal>
 
-        <Reveal variant="right" delay={120} className="relative mx-auto w-full max-w-xs">
-          <LeafSprig
-            aria-hidden="true"
-            className="absolute -left-8 -top-6 h-28 w-20 text-brown/15"
-          />
-          <Character who="blazer" tone="sand" float objectPosition="center top" />
+        <Reveal variant="right" delay={120}>
+          <figure className="overflow-hidden rounded-3xl border border-sand shadow-soft">
+            <Image
+              src="/acoes/equipe.webp"
+              alt="Equipe de voluntários da Associação Nós na Rua reunida durante ação social, com caixas de doação."
+              width={1456}
+              height={900}
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="aspect-[16/10] w-full object-cover"
+            />
+          </figure>
+          <p className="mt-4 border-l-2 border-terracotta pl-5 font-display text-xl leading-snug text-brown">
+            {siteConfig.mission.positioning}
+          </p>
         </Reveal>
       </div>
     </section>

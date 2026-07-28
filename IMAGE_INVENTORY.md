@@ -5,44 +5,51 @@ As fontes originais ficam em `C:/Users/yuria/Downloads`.
 
 ## Em uso no site
 
-### Registro real da ação (Tapera)
-- **Origem:** `ChatGPT Image 27 de jul. de 2026, 16_14_13.png` (1672×941, paisagem)
-- **Conteúdo:** ação comunitária na Tapera — roupas, calçados, voluntários e
-  famílias; banners "Adote uma Família"; cadeira de rodas.
-- **Pessoas identificáveis:** não — **todos os rostos estão desfocados na origem**.
-- **Crianças:** presentes, com rostos desfocados.
-- **Tratamento:** correção leve de brilho/contraste/saturação + nitidez; **sem
-  remover o desfoque** e sem alterar a cena; exportado em WebP.
-- **Uso:** hero (`/acoes/tapera-acao.webp`) e recortes na galeria
-  (`/acoes/tapera-calcados.webp`, `/acoes/tapera-roupas.webp`,
-  `/acoes/tapera-familias.webp`).
-- **Decisão:** **USAR.** Pendência: confirmar autorização formal de uso de imagem
-  (mesmo com desfoque) com a associação.
+### Hero — ação na Tapera
+- **Origem:** `ChatGPT Image 27 de jul. de 2026, 16_14_13.png` (1672×941)
+- **Conteúdo:** ação comunitária na Tapera; **rostos desfocados na origem**.
+- **Uso:** hero em tela cheia (`/acoes/tapera-acao.webp`) e recortes de itens na
+  galeria/projetos (`tapera-calcados`, `tapera-roupas`, `tapera-familias`).
+- **Decisão:** **USAR** (blur preservado).
 
-### Logotipo oficial
-- **Origem:** `Logo Nos na rua.png` (1280×1229)
-- **Conteúdo:** marca (mandala) "NÓS na RUA · São José – Santa Catarina".
-- **Tratamento:** fundo removido (transparente) + redimensionado.
-- **Uso:** `/logo-nos-na-rua.png` (cabeçalho e rodapé).
-- **Decisão:** **USAR.**
+### Equipe / voluntários
+- **Origem:** `equipe nos marmita.jpeg` (1536×1536)
+- **Conteúdo:** 5 voluntários posando com camisetas da campanha e caixas de
+  doação. **Posaram voluntariamente** para o registro institucional.
+- **Uso:** seção "Quem faz acontecer" (`/acoes/equipe.webp`, recorte paisagem).
+- **Decisão:** **USAR.** Rostos de voluntários mantidos (posaram). Pendência:
+  confirmar autorização formal de uso de imagem.
 
-### Personagens ilustrados (institucionais)
-- **Origem:** `ChatGPT Image 27 de jul. de 2026, 14_34_04.png` (arte de parceria)
-- **Conteúdo:** ilustrações da marca (mulher de blazer; homem com caixa).
-- **Uso:** `/personagens/personagem-blazer.png`, `/personagens/personagem-caixa.png`.
-- **Decisão:** **USAR** como personagens institucionais (não são pessoas reais).
-  O poster completo **não** é publicado.
+### Marmitas — entrega com caixa térmica
+- **Origem:** `nos1.jpeg` (1536×1536)
+- **Conteúdo:** voluntária entregando marmita; caixa térmica "NÓS na RUA".
+- **Tratamento:** **rosto do beneficiário borrado** (Gaussian). Voluntária mantida.
+- **Uso:** seção Marmitas (`/acoes/marmita-caixa.webp`).
+- **Decisão:** **USAR** com rosto do beneficiário anonimizado.
 
-## Não utilizadas (aguardando avaliação)
+### Marmitas — entrega individual
+- **Origem:** `nos2.jpeg` (1536×1536)
+- **Conteúdo:** voluntária entregando refeição a uma pessoa.
+- **Tratamento:** **rosto do beneficiário borrado**. Voluntária mantida.
+- **Uso:** seção Marmitas, foto de apoio (`/acoes/marmita-entrega.webp`).
+- **Decisão:** **USAR** com rosto do beneficiário anonimizado.
 
-Existem outras imagens em `Downloads` (ex.: `IMG_2026*`, `WhatsApp Image 2026-07-20*`,
-`original_*IMG_20230513*`, `highlights_*`). Muitas podem ser de **outros projetos**
-ou conter **pessoas identificáveis sem desfoque/autorização**.
+## Não utilizadas
 
-- **Decisão:** **AGUARDAR.** Não usar até avaliar individualmente privacidade,
-  autorização de uso de imagem e pertinência à Nós na Rua.
+### Distribuição noturna (várias pessoas)
+- **Origem:** `nos3.jpeg` (1536×1536)
+- **Motivo:** **vários rostos identificáveis de pessoas atendidas** (difícil
+  anonimizar com segurança) e enquadramento menos digno. Já há registros fortes
+  e dignos suficientes.
+- **Decisão:** **NÃO USAR** por ora. Aguardar um registro melhor / autorização.
+
+### Outras imagens em Downloads
+- Podem ser de outros projetos ou conter pessoas identificáveis sem autorização.
+- **Decisão:** **AGUARDAR** avaliação individual.
 
 ## Regra permanente
 
-Não publicar foto real com pessoa identificável sem autorização. Não gerar
-pessoas fictícias. Ilustrações complementam, mas não substituem a prova real.
+Não publicar foto com pessoa identificável **atendida** sem desfoque/autorização.
+Voluntários que posaram podem aparecer, mas a associação ainda deve **confirmar a
+autorização de uso público de todas as fotos** (ver CONTENT_PENDING.md). Não gerar
+pessoas fictícias; ilustrações complementam, mas não substituem a prova real.

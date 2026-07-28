@@ -12,8 +12,10 @@ ocultas (não renderizam) — nunca com placeholder público.
 - Confirmar qual número recebe os comprovantes.
 - Confirmar a **missão institucional final** com a diretoria (hoje há um texto
   provisório aprovado em `siteConfig.mission`).
-- Confirmar se **todas as fotografias** possuem autorização de uso no site
-  (inclusive com rostos desfocados) — ver `IMAGE_INVENTORY.md`.
+- **Confirmar a autorização de uso público de TODAS as fotos** — inclusive as
+  novas (equipe, entregas de marmita) e as que têm rostos desfocados. Rostos de
+  pessoas atendidas foram anonimizados por precaução; ainda assim é preciso o
+  aval formal da associação. Ver `IMAGE_INVENTORY.md`.
 - Receber **QR Code** ou payload PIX oficial (`siteConfig.donation.qrCodeImage`).
 - Confirmar **local público** para entrega de doações (o endereço cadastral é
   residencial e **não** é divulgado).

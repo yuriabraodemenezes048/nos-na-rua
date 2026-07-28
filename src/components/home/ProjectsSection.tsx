@@ -1,15 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { Character } from "@/components/Character";
 import { LeafSprig } from "@/components/brand/Decor";
 import { WhatsAppIcon, CheckIcon } from "@/components/Icons";
-import { projects } from "@/data/projects";
-import { whatsappUrl, siteConfig } from "@/data/site";
+import { projects, type Project } from "@/data/projects";
+import { whatsappUrl } from "@/data/site";
 
 /**
- * Projetos — blocos editoriais alternados (não são cards iguais).
- * O primeiro projeto usa o personagem da caixa de doações como apoio visual;
- * os demais usam grafismos da identidade.
+ * Projetos reais — blocos editoriais alternados com fotografias grandes.
+ * O projeto de marmitas recebe uma composição com duas fotos (principal + apoio).
  */
 export function ProjectsSection() {
   return (
@@ -31,9 +30,8 @@ export function ProjectsSection() {
               <article
                 key={project.id}
                 id={project.id}
-                className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
+                className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
               >
-                {/* Texto */}
                 <Reveal
                   variant={flipped ? "right" : "left"}
                   className={flipped ? "lg:order-2" : ""}
@@ -86,13 +84,12 @@ export function ProjectsSection() {
                   </div>
                 </Reveal>
 
-                {/* Visual */}
                 <Reveal
                   variant={flipped ? "left" : "right"}
                   delay={120}
                   className={flipped ? "lg:order-1" : ""}
                 >
-                  <ProjectVisual index={index} />
+                  <ProjectVisual project={project} index={index} />
                 </Reveal>
               </article>
             );
@@ -103,29 +100,60 @@ export function ProjectsSection() {
   );
 }
 
-/** Bloco visual de cada projeto — varia por índice para não repetir. */
-function ProjectVisual({ index }: { index: number }) {
-  if (index === 0) {
+/** Bloco visual do projeto: 2 fotos (composição), 1 foto grande, ou grafismo. */
+function ProjectVisual({ project, index }: { project: Project; index: number }) {
+  const images = project.images ?? [];
+
+  // Duas fotos — composição editorial (principal grande + apoio sobreposto)
+  if (images.length >= 2) {
     return (
-      <div className="relative mx-auto w-full max-w-sm">
-        <div
-          aria-hidden="true"
-          className="absolute -right-6 -top-6 -z-10 h-40 w-40 bg-terracotta/15"
-          style={{ borderRadius: "54% 46% 58% 42% / 44% 56% 44% 56%" }}
-        />
-        <Character who="box" tone="sand" objectPosition="center top" />
-        <span className="absolute bottom-4 left-4 rounded-full bg-brown px-4 py-2 text-sm font-semibold text-white shadow-soft">
-          {siteConfig.impact.day} · {siteConfig.impact.time}
-        </span>
+      <div className="relative">
+        <figure className="overflow-hidden rounded-3xl border border-sand shadow-soft">
+          <Image
+            src={images[0].src}
+            alt={images[0].alt}
+            width={images[0].width}
+            height={images[0].height}
+            loading="lazy"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="aspect-[4/3] w-full object-cover"
+          />
+        </figure>
+        <figure className="absolute -bottom-8 -right-3 hidden w-2/5 overflow-hidden rounded-2xl border-4 border-cream shadow-soft sm:block">
+          <Image
+            src={images[1].src}
+            alt={images[1].alt}
+            width={images[1].width}
+            height={images[1].height}
+            loading="lazy"
+            sizes="220px"
+            className="aspect-square w-full object-cover"
+          />
+        </figure>
       </div>
     );
   }
 
-  const tone = index === 1 ? "bg-terracotta/15" : "bg-sand";
+  // Uma foto grande
+  if (images.length === 1) {
+    return (
+      <figure className="overflow-hidden rounded-3xl border border-sand shadow-soft">
+        <Image
+          src={images[0].src}
+          alt={images[0].alt}
+          width={images[0].width}
+          height={images[0].height}
+          loading="lazy"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="aspect-[16/10] w-full object-cover"
+        />
+      </figure>
+    );
+  }
+
+  // Sem foto — grafismo da marca
   return (
-    <div
-      className={`relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl ${tone}`}
-    >
+    <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl bg-sand">
       <LeafSprig
         aria-hidden="true"
         className="absolute -bottom-4 -left-2 h-40 w-28 text-brown/15"
