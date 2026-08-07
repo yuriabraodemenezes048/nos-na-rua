@@ -3,26 +3,27 @@ import { Sparkline } from "@/components/brand/Decor";
 import { siteConfig } from "@/data/site";
 
 /**
- * Quem somos — bloco editorial de texto, fundo claro. A prova humana (foto da
- * equipe) vem logo depois, em largura total (EquipeBand).
+ * Quem somos + impacto — bloco editorial. Os números confirmados aparecem como
+ * tipografia grande (não como cards), integrados à narrativa.
  */
 export function QuemSomos() {
   const { impact, location, organization } = siteConfig;
+
   const stats = [
-    { big: `Desde ${impact.sinceYear}`, small: "registrada e ativa" },
-    { big: location.region, small: "área de atuação" },
-    { big: impact.mealsPerWeek, small: "refeições por semana" },
+    { top: "Desde", big: impact.sinceYear },
+    { big: impact.mealsPerWeek, bottom: "refeições por semana" },
+    { big: location.region, bottom: "onde atuamos" },
   ];
 
   return (
     <section id="quem-somos" className="section">
-      <div className="container-site max-w-3xl">
-        <Reveal>
+      <div className="container-site">
+        <Reveal className="max-w-3xl">
           <p className="kicker">
             <Sparkline className="h-4 w-8" />
             Quem somos
           </p>
-          <h2 className="section-title mt-4">Uma rede construída para cuidar.</h2>
+          <h2 className="section-title mt-5">Uma rede construída para cuidar.</h2>
           <div className="mt-6 max-w-prose space-y-4 text-lg leading-relaxed text-muted">
             <p>
               Somos a Associação Nós na Rua. Nascemos da união de pessoas
@@ -37,21 +38,40 @@ export function QuemSomos() {
           <p className="mt-6 border-l-2 border-terracotta pl-4 text-[0.95rem] italic leading-relaxed text-brown">
             {siteConfig.mission.full}
           </p>
-
-          <dl className="mt-8 grid grid-cols-3 gap-x-6 gap-y-5 border-t border-brown/10 pt-6">
-            {stats.map((s) => (
-              <div key={s.big}>
-                <dt className="font-display text-xl leading-none text-ink sm:text-2xl">
-                  {s.big}
-                </dt>
-                <dd className="mt-1 text-sm text-muted">{s.small}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="sr-only">
-            {organization.natureLabel} · CNPJ {organization.cnpj}
-          </p>
         </Reveal>
+
+        {/* Impacto — números editoriais grandes, sem cards */}
+        <Reveal
+          delay={120}
+          className="mt-14 grid grid-cols-1 gap-8 border-t border-brown/12 pt-10 sm:grid-cols-3 sm:gap-0"
+        >
+          {stats.map((s, i) => (
+            <div
+              key={s.big}
+              className={
+                i > 0 ? "sm:border-l sm:border-brown/12 sm:pl-8" : undefined
+              }
+            >
+              {s.top && (
+                <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-brown">
+                  {s.top}
+                </p>
+              )}
+              <p className="mt-1 font-display text-[2.75rem] font-semibold leading-[0.95] text-ink sm:text-[3.25rem]">
+                {s.big}
+              </p>
+              {s.bottom && (
+                <p className="mt-2 text-sm uppercase tracking-wide text-muted">
+                  {s.bottom}
+                </p>
+              )}
+            </div>
+          ))}
+        </Reveal>
+
+        <p className="sr-only">
+          {organization.natureLabel} · CNPJ {organization.cnpj}
+        </p>
       </div>
     </section>
   );

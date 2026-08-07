@@ -25,7 +25,7 @@ export const projects: Project[] = [
     id: "marmitas",
     kicker: "Entregas semanais",
     title: "Alimento, escuta e acolhimento.",
-    text: "Todas as segundas-feiras, a partir das 19h30, o Nós na Rua distribui aproximadamente 100 refeições nas proximidades do Viaduto da Chico Mendes, em São José. A ação envolve conversa, escuta e acolhimento.",
+    text: "Todas as segundas-feiras, a partir das 19h30, o Nós na Rua distribui aproximadamente 100 refeições nas proximidades do Viaduto da Chico Mendes, em São José. Além da alimentação, a ação envolve conversa, escuta e acolhimento.",
     note: "As marmitas são produzidas semanalmente em parceria com a Cozinha Solidária da Vila Aparecida e distribuídas pelo Nós na Rua.",
     facts: ["≈ 100 refeições", "Segundas, às 19h30", "Viaduto da Chico Mendes"],
     images: [

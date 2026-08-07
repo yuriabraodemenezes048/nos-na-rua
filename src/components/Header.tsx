@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/Logo";
 import { MenuIcon, CloseIcon } from "@/components/Icons";
@@ -19,17 +20,29 @@ const navLinks = [
  * acessível: foco controlado e fechamento por Escape.
  */
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // Na home, o header fica transparente enquanto o hero domina a viewport.
+    const onScroll = () => {
+      const threshold = isHome ? window.innerHeight * 0.6 : 8;
+      setScrolled(window.scrollY > threshold);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isHome]);
+
+  const overHero = isHome && !scrolled;
 
   useEffect(() => {
     if (!open) return;
@@ -53,13 +66,17 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-40 border-b transition-colors ${
-        scrolled
-          ? "border-sand/80 bg-cream/95 backdrop-blur-md"
-          : "border-transparent bg-cream"
+        overHero
+          ? "border-transparent bg-transparent"
+          : "border-sand/80 bg-cream/95 backdrop-blur-md"
       }`}
     >
       <div className="container-site flex h-16 items-center justify-between gap-4">
-        <Link href="/" aria-label="Nós na Rua — página inicial">
+        <Link
+          href="/"
+          aria-label="Nós na Rua — página inicial"
+          className={overHero ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]" : ""}
+        >
           <Logo />
         </Link>
 
@@ -71,7 +88,11 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[0.9375rem] font-medium text-muted transition-colors hover:text-ink"
+              className={`text-[0.9375rem] font-medium transition-colors ${
+                overHero
+                  ? "text-white/90 hover:text-white"
+                  : "text-muted hover:text-ink"
+              }`}
             >
               {link.label}
             </Link>
@@ -90,7 +111,9 @@ export function Header() {
           onClick={() => setOpen(true)}
           aria-expanded={open}
           aria-controls="menu-mobile"
-          className="grid h-11 w-11 place-items-center rounded-full border border-brown/20 text-brown lg:hidden"
+          className={`grid h-11 w-11 place-items-center rounded-full border transition-colors lg:hidden ${
+            overHero ? "border-white/50 text-white" : "border-brown/20 text-brown"
+          }`}
         >
           <MenuIcon className="h-6 w-6" />
           <span className="sr-only">Abrir menu</span>

@@ -19,14 +19,14 @@
     --radius-card: 1.25rem;
     --shadow-soft: 0 8px 24px -16px rgba(17, 17, 17, 0.25);
     --shadow-lift: 0 24px 60px -30px rgba(58, 34, 24, 0.5);
-    --section-y: 4.5rem;
+    --section-y: 5rem;
 
     color-scheme: light;
   }
 
   @media (min-width: 768px) {
     :root {
-      --section-y: 6.5rem;
+      --section-y: 7.5rem;
     }
   }
 
@@ -118,7 +118,7 @@
   }
 
   .section-title {
-    @apply font-display text-[1.875rem] leading-[1.1] sm:text-[2.375rem];
+    @apply font-display text-[2rem] leading-[1.06] sm:text-[2.75rem] lg:text-[3rem];
   }
 
   .section-lead {

@@ -23,7 +23,7 @@ export function PhotoHero() {
 
   return (
     <section
-      className="relative isolate flex min-h-[88svh] w-full items-end overflow-hidden"
+      className="relative isolate -mt-16 flex min-h-[92svh] w-full items-end overflow-hidden"
       aria-labelledby="hero-title"
     >
       <Image
@@ -45,6 +45,11 @@ export function PhotoHero() {
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-r from-brown-dark/70 via-brown-dark/20 to-transparent"
+      />
+      {/* Leve escurecimento no topo, para a navegação branca sobre a foto */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brown-dark/55 to-transparent"
       />
 
       <div className="container-site relative z-10 w-full pb-28 pt-16 sm:pb-20 lg:pb-24">

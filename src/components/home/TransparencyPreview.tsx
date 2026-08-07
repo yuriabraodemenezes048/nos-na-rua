@@ -26,11 +26,13 @@ export function TransparencyPreview() {
             cada contribuição.
           </p>
 
-          <dl className="mt-8 grid gap-x-8 gap-y-4 border-t border-brown/10 pt-6 sm:grid-cols-3">
+          <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-5 border-t border-brown/12 pt-6">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="text-[0.8125rem] text-muted">{f.label}</dt>
-                <dd className="mt-1 break-words font-medium text-ink">
+                <dt className="text-[0.8125rem] uppercase tracking-wide text-muted">
+                  {f.label}
+                </dt>
+                <dd className="mt-1 break-words font-display text-lg text-ink">
                   {f.value}
                 </dd>
               </div>
