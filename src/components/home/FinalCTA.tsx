@@ -28,15 +28,15 @@ export function FinalCTA() {
       <div className="container-site relative z-10 w-full py-20 text-center">
         <Reveal className="mx-auto max-w-2xl">
           <h2 className="font-display text-[2rem] leading-tight text-cream sm:text-[2.5rem]">
-            Cada contribuição mantém essa rede em movimento.
+            Cada gesto fortalece essa rede.
           </h2>
           <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-sand">
-            Doe, participe ou compartilhe. Toda forma de apoio ajuda a Nós na Rua
-            a continuar presente.
+            Doe, participe ou compartilhe. Existem muitas formas de ajudar o
+            cuidado a chegar mais longe.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/doe" className="btn-on-brown w-full sm:w-auto">
-              Doar agora
+              Fazer uma doação
             </Link>
             <a
               href={whatsappUrl()}
@@ -44,7 +44,7 @@ export function FinalCTA() {
               rel="noopener noreferrer"
               className="inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-full border border-white/60 px-7 text-base font-semibold text-white transition-colors hover:bg-white/10 sm:w-auto"
             >
-              Falar com a associação
+              Falar com a gente
             </a>
           </div>
         </Reveal>

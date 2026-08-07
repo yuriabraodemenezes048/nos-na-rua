@@ -2,46 +2,58 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Character } from "@/components/Character";
 import { WhatsAppIcon, ArrowRightIcon } from "@/components/Icons";
-import { whatsappUrl, whatsappMessages } from "@/data/site";
+import { siteConfig, whatsappUrl, whatsappMessages } from "@/data/site";
 import { needCategories } from "@/data/donations";
 
 /**
- * Como ajudar — seção única que reúne PIX, doação de itens (com acordeão de
- * necessidades), voluntariado e parceria empresarial. Composição editorial
- * assimétrica; os personagens entram como apoio (caixa junto aos itens,
- * pasta junto à parceria).
+ * Como ajudar — seção única que reúne doação por PIX, doação de itens (com
+ * acordeão de necessidades), voluntariado e parceria empresarial. Composição
+ * editorial; os personagens da identidade entram como apoio.
  */
 export function HelpSection() {
+  const { donation } = siteConfig;
+
   return (
     <section id="como-ajudar" className="section bg-sand/40">
       <div className="container-site">
         <Reveal className="max-w-2xl">
           <p className="kicker">Como ajudar</p>
-          <h2 className="section-title mt-4">Você também pode fazer parte</h2>
+          <h2 className="section-title mt-4">Tem muitas formas de fazer parte.</h2>
           <p className="section-lead mt-4">
-            A transformação acontece quando cada pessoa contribui da maneira que
-            pode.
+            Cada contribuição ajuda o Nós na Rua a manter suas ações e ampliar
+            sua rede de cuidado.
           </p>
         </Reveal>
 
         {/* Blocos principais: PIX + Itens */}
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <Reveal className="flex flex-col rounded-3xl bg-brown p-7 text-white shadow-soft sm:p-8">
-            <h3 className="font-display text-2xl">Doe pelo PIX</h3>
-            <p className="mt-3 flex-1 leading-relaxed text-white/85">
-              Contribua com qualquer valor para ajudar a manter as ações.
+            <h3 className="font-display text-2xl">Doação financeira</h3>
+            <p className="mt-3 leading-relaxed text-white/85">
+              Contribua com qualquer valor pelo PIX. Rápido e seguro.
             </p>
+            <dl className="mt-5 space-y-3 border-t border-white/15 pt-5 text-[0.9375rem]">
+              <div>
+                <dt className="text-white/70">PIX (CNPJ)</dt>
+                <dd className="font-mono font-medium">{donation.pixKey}</dd>
+              </div>
+              <div>
+                <dt className="text-white/70">Nome</dt>
+                <dd className="font-medium">{donation.receiverName}</dd>
+              </div>
+            </dl>
             <Link href="/doe" className="btn-on-brown mt-6 w-full sm:w-fit">
               Doar agora
             </Link>
           </Reveal>
 
           <Reveal delay={80} className="relative overflow-hidden rounded-3xl border border-sand bg-cream p-7 sm:p-8">
-            <div className="sm:max-w-[78%]">
-              <h3 className="font-display text-2xl">Doe itens</h3>
+            <div className="sm:max-w-[72%]">
+              <h3 className="font-display text-2xl">Doação de itens</h3>
               <p className="mt-3 leading-relaxed text-muted">
-                Alimentos, roupas, materiais escolares, produtos de higiene e
-                outros itens ajudam nas entregas e projetos.
+                Alimentos, roupas, agasalhos, itens de higiene, materiais
+                escolares, brinquedos e insumos ajudam nas entregas e nos
+                projetos.
               </p>
 
               <details className="group mt-5 rounded-2xl border border-sand">
@@ -80,7 +92,6 @@ export function HelpSection() {
               </a>
             </div>
 
-            {/* Personagem com caixa, apoio visual em tamanho grande */}
             <Character
               who="box"
               tone="sand"
@@ -93,9 +104,11 @@ export function HelpSection() {
         {/* Blocos secundários: Voluntariado + Empresas */}
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <Reveal className="rounded-3xl border border-sand bg-cream p-7">
-            <h3 className="font-display text-xl">Seja voluntário</h3>
+            <h3 className="font-display text-xl">Voluntariado</h3>
             <p className="mt-2 leading-relaxed text-muted">
-              Some sua presença às ações e à mobilização da associação.
+              A atuação do Nós na Rua também acontece com a força de pessoas
+              dispostas a ajudar, acolher e participar das ações junto à
+              comunidade.
             </p>
             <a
               href={whatsappUrl(whatsappMessages.volunteer)}
@@ -104,16 +117,17 @@ export function HelpSection() {
               className="mt-4 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-brown underline-offset-4 hover:underline"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              Quero ser voluntário
+              Quero participar
             </a>
           </Reveal>
 
           <Reveal delay={80} className="relative overflow-hidden rounded-3xl border border-sand bg-cream p-7">
-            <div className="sm:max-w-[78%]">
-              <h3 className="font-display text-xl">Empresas parceiras</h3>
+            <div className="sm:max-w-[70%]">
+              <h3 className="font-display text-xl">Empresas</h3>
               <p className="mt-2 leading-relaxed text-muted">
-                Empresas podem contribuir com recursos, produtos, serviços,
-                logística ou divulgação.
+                Sua empresa também pode fazer parte dessa rede — com doações,
+                produtos, serviços, logística, campanhas e outras formas de
+                parceria.
               </p>
               <a
                 href={whatsappUrl(whatsappMessages.partnership)}
@@ -121,7 +135,7 @@ export function HelpSection() {
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-brown underline-offset-4 hover:underline"
               >
-                Conversar sobre parceria
+                Quero ser parceiro
                 <ArrowRightIcon className="h-4 w-4" />
               </a>
             </div>

@@ -24,9 +24,10 @@ export const needCategories: NeedCategory[] = [
     items: ["Sacos de lixo reforçados de 100 litros"],
   },
   {
-    id: "agasalhos",
-    title: "Agasalhos",
+    id: "roupas",
+    title: "Roupas e agasalhos",
     items: [
+      "Roupas",
       "Casacos",
       "Blusas",
       "Calças",
@@ -36,6 +37,11 @@ export const needCategories: NeedCategory[] = [
       "Luvas",
       "Cobertores",
     ],
+  },
+  {
+    id: "higiene",
+    title: "Higiene",
+    items: ["Itens de higiene pessoal"],
   },
   {
     id: "educacao",

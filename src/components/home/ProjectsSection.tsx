@@ -17,9 +17,11 @@ export function ProjectsSection() {
         <div className="container-site max-w-2xl">
           <Reveal>
             <p className="kicker">Nossos projetos</p>
-            <h2 className="section-title mt-4">Amor transformado em ação</h2>
+            <h2 className="section-title mt-4">
+              O cuidado acontece de muitas formas.
+            </h2>
             <p className="section-lead mt-4">
-              Conheça as iniciativas que fazem parte do trabalho contínuo da Nós
+              Conheça as iniciativas que fazem parte do trabalho contínuo do Nós
               na Rua.
             </p>
           </Reveal>
@@ -58,6 +60,11 @@ function ProjectChapter({ project, index }: { project: Project; index: number })
         <p className="mt-4 text-sm font-medium text-white/85">
           {project.facts.join("  ·  ")}
         </p>
+        {project.note && (
+          <p className="mt-4 max-w-prose border-l-2 border-[#F0C6B6]/70 pl-4 text-[0.9375rem] leading-relaxed text-sand">
+            {project.note}
+          </p>
+        )}
         <div className="mt-7">
           {cta.href ? (
             <Link href={cta.href} className="btn-on-brown">

@@ -21,6 +21,8 @@ export const siteConfig = {
   organization: {
     cnpj: "43.557.623/0001-72",
     legalNature: "Associação Privada",
+    /** Como a natureza é comunicada ao público */
+    natureLabel: "Associação sem fins lucrativos",
     status: "Ativa",
     /** Data de abertura no formato ISO e por extenso */
     foundedISO: "2021-05-03",
@@ -107,14 +109,14 @@ export const siteConfig = {
     /** Mulher de blazer com pasta — olha para a direita. Tom institucional. */
     blazer: {
       src: "/personagens/personagem-blazer.png",
-      alt: "Ilustração de uma mulher de blazer segurando uma pasta, personagem da identidade da Nós na Rua.",
+      alt: "Ilustração de uma mulher de blazer segurando uma pasta, personagem da identidade do Nós na Rua.",
       width: 250,
       height: 520,
     },
     /** Homem de gorro com caixa de doações — olha para a esquerda. */
     box: {
       src: "/personagens/personagem-caixa.png",
-      alt: "Ilustração de um jovem de gorro segurando uma caixa de doações, personagem da identidade da Nós na Rua.",
+      alt: "Ilustração de um jovem de gorro segurando uma caixa de doações, personagem da identidade do Nós na Rua.",
       width: 378,
       height: 515,
     },
@@ -124,20 +126,28 @@ export const siteConfig = {
 /** Mensagens pré-preenchidas do WhatsApp, por contexto. */
 export const whatsappMessages = {
   items:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de combinar uma doação de itens.",
+    "Olá! Conheci o Nós na Rua pelo site e gostaria de combinar uma doação de itens.",
   volunteer:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de saber como participar como voluntário(a).",
+    "Olá! Conheci o Nós na Rua pelo site e gostaria de saber como participar como voluntário(a).",
   partnership:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de conversar sobre uma parceria com a minha empresa.",
+    "Olá! Conheci o Nós na Rua pelo site e gostaria de conversar sobre uma parceria com a minha empresa.",
   adoptFamily:
     "Olá! Conheci o Projeto Adote uma Família e gostaria de saber como posso apoiar.",
   seasonal:
-    "Olá! Conheci as ações da Nós na Rua e gostaria de colaborar com as próximas campanhas.",
+    "Olá! Conheci as ações do Nós na Rua e gostaria de colaborar com as próximas campanhas.",
   receipt:
     "Olá! Fiz uma contribuição para a Associação Nós na Rua e gostaria de enviar o comprovante.",
   general:
-    "Olá! Conheci a Nós na Rua pelo site e gostaria de falar com a associação.",
+    "Olá! Conheci o Nós na Rua pelo site e gostaria de saber como posso ajudar.",
 } as const;
+
+/**
+ * Parceiros reais e confirmados. As logos poderão ser adicionadas depois;
+ * enquanto isso, os parceiros aparecem pelo nome. Não inventar parceiros.
+ */
+export const partners = [
+  { name: "Cozinha Solidária da Vila Aparecida", note: "Produção das marmitas" },
+] as const;
 
 /** Monta o link do WhatsApp com a mensagem devidamente codificada. */
 export function whatsappUrl(message: string = whatsappMessages.general): string {

@@ -26,10 +26,10 @@ export default function TransparencyPage() {
   const institutional = [
     { label: "Razão social", value: siteConfig.legalName },
     { label: "CNPJ", value: organization.cnpj },
-    { label: "Natureza jurídica", value: organization.legalNature },
+    { label: "Natureza", value: organization.natureLabel },
     { label: "Data de abertura", value: organization.foundedLabel },
     { label: "Situação", value: organization.status },
-    { label: "Município", value: location.label },
+    { label: "Atuação", value: location.region },
   ];
 
   return (
@@ -46,13 +46,13 @@ export default function TransparencyPage() {
               Transparência
             </h1>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
-              A confiança de quem apoia é parte essencial do nosso trabalho.
-              Nesta página serão publicados os resultados, documentos e
-              prestações de contas aprovados pela associação.
+              Confiança também se constrói mostrando como cada contribuição
+              fortalece nossas ações.
             </p>
             <p className="mt-4 max-w-prose leading-relaxed text-muted">
               As doações recebidas são destinadas à manutenção das ações
-              semanais e à compra de insumos para os projetos ativos.
+              semanais e à aquisição de materiais, insumos e recursos
+              necessários para os projetos ativos.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export default function TransparencyPage() {
           {/* Relatórios */}
           <Reveal>
             <h2 className="section-title mt-14 text-[1.5rem] sm:text-[1.75rem]">
-              Relatórios e prestações de contas
+              Documentos e relatórios
             </h2>
 
             {transparencyReports.length > 0 ? (
@@ -86,9 +86,9 @@ export default function TransparencyPage() {
             ) : (
               <div className="mt-6 rounded-2xl border border-sand bg-sand/40 p-6 sm:p-8">
                 <p className="max-w-prose leading-relaxed text-muted">
-                  Os primeiros relatórios e documentos estão sendo organizados
-                  pela associação. Assim que forem revisados e aprovados, serão
-                  publicados nesta página.
+                  Os documentos de prestação de contas e relatórios
+                  institucionais serão disponibilizados nesta área conforme
+                  publicação pela associação.
                 </p>
                 <a
                   href={whatsappUrl()}

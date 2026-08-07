@@ -4,6 +4,7 @@ import { QuemSomos } from "@/components/home/QuemSomos";
 import { EquipeBand } from "@/components/home/EquipeBand";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
 import { HelpSection } from "@/components/home/HelpSection";
+import { PartnersSection } from "@/components/home/PartnersSection";
 import { TransparencyPreview } from "@/components/home/TransparencyPreview";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <EquipeBand />
       <ProjectsSection />
       <HelpSection />
+      <PartnersSection />
       <TransparencyPreview />
       <FinalCTA />
     </SiteShell>

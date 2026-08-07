@@ -6,6 +6,7 @@ import { Logo } from "@/components/Logo";
 import { MenuIcon, CloseIcon } from "@/components/Icons";
 
 const navLinks = [
+  { href: "/", label: "Início" },
   { href: "/#quem-somos", label: "Quem somos" },
   { href: "/#projetos", label: "Projetos" },
   { href: "/#como-ajudar", label: "Como ajudar" },

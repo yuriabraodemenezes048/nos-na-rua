@@ -23,8 +23,14 @@ ocultas (não renderizam) — nunca com placeholder público.
 - **Adote uma Família:** número atual de famílias; como é feito o cadastro e o
   apadrinhamento. Enviar a **melhor foto de entrega de cesta básica** (hoje a
   seção usa a foto dos banners "Adote uma Família").
-- **Marmitas:** quais **cozinhas comunitárias** colaboram; fotos futuras da
-  **preparação das marmitas**.
+- **Marmitas:** fotos futuras da **preparação das marmitas**. Parceria da
+  produção já confirmada: **Cozinha Solidária da Vila Aparecida**.
+
+## Parceiros
+
+- Enviar **logos dos parceiros** (ex.: Cozinha Solidária da Vila Aparecida) e
+  novos parceiros para a seção "Parceiros" (hoje aparecem pelo nome, sem logo).
+  Não usar logos falsas.
 
 ## Transparência
 

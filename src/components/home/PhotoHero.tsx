@@ -53,8 +53,8 @@ export function PhotoHero() {
             loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           } motion-reduce:translate-y-0 motion-reduce:opacity-100`}
         >
-          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#F0C6B6]">
-            Associação Nós na Rua · {siteConfig.location.shortLabel}
+          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#F0C6B6]">
+            Associação Nós na Rua
           </p>
           <h1
             id="hero-title"
@@ -63,15 +63,8 @@ export function PhotoHero() {
             Solidariedade que chega a quem precisa.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand">
-            Mobilizamos pessoas, doações e parcerias para apoiar pessoas e
-            famílias em situação de vulnerabilidade na {siteConfig.location.region}.
-          </p>
-          <p className="mt-5 text-[0.95rem] font-medium text-white">
-            <span
-              aria-hidden
-              className="mr-2 inline-block h-2.5 w-2.5 -translate-y-px rounded-full bg-terracotta align-middle"
-            />
-            Aproximadamente 100 refeições distribuídas toda segunda-feira.
+            Apoiamos pessoas em situação de rua e famílias em situação de
+            vulnerabilidade na {siteConfig.location.region}.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -86,8 +79,21 @@ export function PhotoHero() {
               <ArrowRightIcon className="h-5 w-5" />
             </a>
           </div>
+
+          <p className="mt-8 text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-white/70">
+            São José • Santa Catarina
+          </p>
         </div>
       </div>
+
+      {/* Indicação discreta de scroll */}
+      <a
+        href="#quem-somos"
+        aria-label="Rolar para conhecer o Nós na Rua"
+        className="absolute inset-x-0 bottom-4 z-10 mx-auto hidden w-fit text-white/60 transition-colors hover:text-white sm:block"
+      >
+        <ArrowRightIcon className="h-6 w-6 rotate-90 motion-safe:animate-bounce" />
+      </a>
     </section>
   );
 }

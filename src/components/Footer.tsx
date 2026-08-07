@@ -19,8 +19,9 @@ export function Footer() {
             <Logo size="footer" />
             <div className="text-sm leading-relaxed text-muted">
               <p className="font-medium text-ink">{siteConfig.legalName}</p>
-              <p>CNPJ {siteConfig.organization.cnpj}</p>
               <p>{siteConfig.location.label}</p>
+              <p>Atuação na {siteConfig.location.region}</p>
+              <p>CNPJ {siteConfig.organization.cnpj}</p>
             </div>
           </div>
 
@@ -39,7 +40,7 @@ export function Footer() {
               Transparência
             </Link>
             <Link href="/doe" className="text-sm text-muted hover:text-brown">
-              Doar agora
+              Doe
             </Link>
             <Link
               href="/politica-de-privacidade"
@@ -89,7 +90,7 @@ export function Footer() {
         </div>
 
         <p className="mt-10 border-t border-brown/10 pt-6 text-xs text-muted">
-          © {year} {siteConfig.legalName}. Todos os direitos reservados.
+          © {year} Associação {siteConfig.name}. Todos os direitos reservados.
         </p>
       </div>
     </footer>

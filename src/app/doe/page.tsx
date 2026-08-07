@@ -37,11 +37,11 @@ export default function DonatePage() {
           <div>
             <p className="kicker">Doe agora</p>
             <h1 className="mt-4 font-display text-[2.25rem] leading-[1.05] sm:text-[2.75rem]">
-              Transforme solidariedade em ação
+              Sua ajuda mantém essa rede em movimento.
             </h1>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
-              Sua contribuição ajuda a manter a entrega semanal de refeições, o
-              apoio às famílias e as ações comunitárias.
+              Cada contribuição fortalece as ações do Nós na Rua junto a pessoas
+              e famílias em situação de vulnerabilidade.
             </p>
           </div>
           <div className="mx-auto hidden w-full max-w-[13rem] sm:block">
@@ -142,6 +142,50 @@ export default function DonatePage() {
           <p className="mt-12 font-display text-xl text-brown">
             Obrigado por fazer parte dessa corrente de cuidado.
           </p>
+        </div>
+      </section>
+
+      {/* Outras formas de doação */}
+      <section className="section bg-sand/40 pt-12">
+        <div className="container-site max-w-2xl">
+          <h2 className="section-title text-[1.5rem] sm:text-[1.75rem]">
+            Outras formas de doar
+          </h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            Além do PIX, você pode contribuir com itens e com o seu tempo:
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {[
+              "Alimentos e cestas básicas",
+              "Roupas e itens de inverno",
+              "Itens de higiene",
+              "Material escolar",
+              "Brinquedos",
+              "Insumos para as ações",
+              "Voluntariado",
+              "Parcerias empresariais",
+            ].map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-brown/15 bg-cream px-3.5 py-1.5 text-sm text-brown"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-prose leading-relaxed text-muted">
+            Para doações físicas, entre em contato com nossa equipe para combinar
+            local e horário de entrega.
+          </p>
+          <a
+            href={whatsappUrl(whatsappMessages.items)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary mt-6"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+            Combinar uma doação
+          </a>
         </div>
       </section>
     </SiteShell>
