@@ -40,6 +40,7 @@ export function PhotoChapter({
   id,
   children,
   imageFirst = true,
+  layout = "split",
 }: {
   image: ChapterImage;
   variant?: "cover" | "contain";
@@ -49,8 +50,14 @@ export function PhotoChapter({
   priority?: boolean;
   id?: string;
   children?: ReactNode;
-  /** contain: foto antes do texto (padrão) ou depois */
+  /** contain/split: foto antes do texto (padrão) ou depois */
   imageFirst?: boolean;
+  /**
+   * contain: "split" (padrão) coloca foto e texto lado a lado; "stacked"
+   * centraliza a foto acima do texto, criando uma composição diferente das
+   * demais — útil para variar o ritmo entre capítulos consecutivos.
+   */
+  layout?: "split" | "stacked";
 }) {
   if (variant === "contain") {
     return (
@@ -69,8 +76,8 @@ export function PhotoChapter({
         />
         <div aria-hidden className="absolute inset-0 bg-brown-dark/45" />
 
-        <div className="container-site relative z-10 grid w-full items-center gap-8 py-14 sm:py-16 lg:grid-cols-2 lg:gap-14">
-          <div className={imageFirst ? "" : "lg:order-2"}>
+        {layout === "stacked" ? (
+          <div className="container-site relative z-10 flex w-full flex-col items-center py-14 text-center sm:py-16">
             <Image
               src={image.src}
               alt={image.alt}
@@ -78,14 +85,30 @@ export function PhotoChapter({
               height={image.height}
               priority={priority}
               loading={priority ? "eager" : "lazy"}
-              sizes="(max-width: 1024px) 90vw, 45vw"
-              className="mx-auto max-h-[62vh] w-auto"
+              sizes="(max-width: 1024px) 90vw, 640px"
+              className="max-h-[40vh] w-auto rounded-sm shadow-lift"
             />
+            <div className="mt-8 max-w-2xl text-white">{children}</div>
           </div>
-          <div className={`text-white ${imageFirst ? "" : "lg:order-1"}`}>
-            {children}
+        ) : (
+          <div className="container-site relative z-10 grid w-full items-center gap-8 py-14 sm:py-16 lg:grid-cols-2 lg:gap-14">
+            <div className={imageFirst ? "" : "lg:order-2"}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                priority={priority}
+                loading={priority ? "eager" : "lazy"}
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                className="mx-auto max-h-[62vh] w-auto"
+              />
+            </div>
+            <div className={`text-white ${imageFirst ? "" : "lg:order-1"}`}>
+              {children}
+            </div>
           </div>
-        </div>
+        )}
       </section>
     );
   }

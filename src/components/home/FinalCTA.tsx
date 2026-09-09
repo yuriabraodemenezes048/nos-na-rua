@@ -12,13 +12,13 @@ export function FinalCTA() {
   return (
     <section className="relative isolate flex min-h-[68svh] w-full items-center overflow-hidden">
       <Image
-        src="/acoes/equipe.webp"
-        alt="Equipe de voluntários da Associação Nós na Rua reunida durante ação social."
+        src="/acoes/marmita-caixa.webp"
+        alt="Voluntária do Nós na Rua entregando uma refeição durante ação noturna."
         fill
         loading="lazy"
         sizes="100vw"
         className="object-cover"
-        style={{ objectPosition: "center 35%" }}
+        style={{ objectPosition: "center 32%" }}
       />
       <div
         aria-hidden

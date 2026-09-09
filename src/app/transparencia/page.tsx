@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default function TransparencyPage() {
-  const { organization, location } = siteConfig;
+  const { organization, location, donation } = siteConfig;
 
   const institutional = [
     { label: "Razão social", value: siteConfig.legalName },
@@ -30,6 +30,8 @@ export default function TransparencyPage() {
     { label: "Data de abertura", value: organization.foundedLabel },
     { label: "Situação", value: organization.status },
     { label: "Atuação", value: location.region },
+    { label: "PIX (CNPJ)", value: donation.pixKey },
+    { label: "Nome no PIX", value: donation.receiverName },
   ];
 
   return (

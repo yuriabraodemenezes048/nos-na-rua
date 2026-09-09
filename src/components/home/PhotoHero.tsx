@@ -46,10 +46,10 @@ export function PhotoHero() {
         aria-hidden
         className="absolute inset-0 bg-gradient-to-r from-brown-dark/70 via-brown-dark/20 to-transparent"
       />
-      {/* Leve escurecimento no topo, para a navegação branca sobre a foto */}
+      {/* Escurecimento no topo, para a navegação branca permanecer legível sobre a foto */}
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brown-dark/55 to-transparent"
+        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brown-dark/70 via-brown-dark/30 to-transparent"
       />
 
       <div className="container-site relative z-10 w-full pb-28 pt-16 sm:pb-20 lg:pb-24">
@@ -68,8 +68,8 @@ export function PhotoHero() {
             Solidariedade que chega a quem precisa.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand">
-            Apoiamos pessoas em situação de rua e famílias em situação de
-            vulnerabilidade na {siteConfig.location.region}.
+            O Nós na Rua apoia pessoas e famílias em situação de vulnerabilidade
+            social na {siteConfig.location.region}.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

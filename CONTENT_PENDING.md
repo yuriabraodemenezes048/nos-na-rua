@@ -29,8 +29,21 @@ ocultas (não renderizam) — nunca com placeholder público.
 ## Parceiros
 
 - Enviar **logos dos parceiros** (ex.: Cozinha Solidária da Vila Aparecida) e
-  novos parceiros para a seção "Parceiros" (hoje aparecem pelo nome, sem logo).
-  Não usar logos falsas.
+  de novos parceiros. A estrutura já está pronta para recebê-las: basta
+  preencher `logo`, `logoWidth` e `logoHeight` em cada parceiro, em
+  `src/data/site.ts` (`export const partners`) — nenhuma alteração de código é
+  necessária. Sem logo, o parceiro continua aparecendo pelo nome. Não usar
+  logos falsas.
+
+## Empresas — informação fiscal (arquitetura preparada, não publicada)
+
+- **NÃO publicar** nenhuma alegação sobre dedução ou incentivo fiscal
+  ("desconte do Imposto de Renda", "doação sem custo" etc.) até a
+  contabilidade da associação validar o enquadramento fiscal do Nós na Rua.
+- A seção "Para empresas" (dentro de Como Ajudar) já está preparada para
+  exibir esse texto assim que for aprovado: preencher
+  `companyPartnership.fiscalInfo.text` e mudar `enabled` para `true` em
+  `src/data/site.ts`. Enquanto `enabled` for `false`, nada é renderizado.
 
 ## Transparência
 
@@ -47,6 +60,8 @@ ocultas (não renderizam) — nunca com placeholder público.
 | Conteúdo | Arquivo |
 | --- | --- |
 | Dados institucionais, contato, PIX, missão, logo, personagens | `src/data/site.ts` |
+| Parceiros (nome, logo, descrição) | `src/data/site.ts` (`partners`) |
+| Informação fiscal para empresas (desligada por padrão) | `src/data/site.ts` (`companyPartnership`) |
 | Projetos | `src/data/projects.ts` |
 | Necessidades de doação (acordeão) | `src/data/donations.ts` |
 | Relatórios de transparência | `src/data/transparency.ts` |

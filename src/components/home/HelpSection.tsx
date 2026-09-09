@@ -2,14 +2,15 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Character } from "@/components/Character";
-import { WhatsAppIcon } from "@/components/Icons";
-import { whatsappUrl, whatsappMessages } from "@/data/site";
+import { WhatsAppIcon, ArrowRightIcon } from "@/components/Icons";
+import { whatsappUrl, whatsappMessages, companyPartnership } from "@/data/site";
 import { needCategories } from "@/data/donations";
 
 /**
  * Como ajudar — quatro caminhos, apresentados como uma lista editorial (não
- * uma parede de cards). O visitante escolhe um. Os itens de doação ficam atrás
- * de um acordeão acessível, para não sobrecarregar a leitura.
+ * uma parede de cards), para serem entendidos rapidamente. Os itens de
+ * doação ficam atrás de um acordeão acessível. Empresas ganha um bloco
+ * próprio logo abaixo, com mais destaque, pois é uma frente em crescimento.
  */
 export function HelpSection() {
   return (
@@ -99,22 +100,63 @@ export function HelpSection() {
             </a>
           </HelpRow>
 
-          {/* 4 — Ser parceiro */}
+          {/* 4 — Ser parceiro (versão curta da lista; detalhe logo abaixo) */}
           <HelpRow
             index="04"
             title="Ser parceiro"
-            desc="Sua empresa também pode fazer parte dessa rede — com doações, produtos, serviços, logística, campanhas e outras formas de parceria."
+            desc="Sua empresa também pode fazer parte dessa rede de cuidado."
           >
             <a
-              href={whatsappUrl(whatsappMessages.partnership)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary"
+              href="#empresas"
+              className="inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold text-brown underline-offset-4 hover:underline"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-              Quero ser parceiro
+              Saiba mais
+              <ArrowRightIcon className="h-4 w-4" />
             </a>
           </HelpRow>
+        </Reveal>
+
+        {/* Empresas — bloco com mais destaque dentro de Como ajudar */}
+        <Reveal
+          id="empresas"
+          delay={80}
+          className="relative mt-10 overflow-hidden rounded-3xl bg-brown p-8 text-white sm:p-10 lg:pr-56"
+        >
+          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-white/70">
+            Para empresas
+          </p>
+          <h3 className="mt-3 font-display text-2xl sm:text-[1.75rem]">
+            Sua empresa pode fortalecer essa rede.
+          </h3>
+          <p className="mt-3 max-w-prose leading-relaxed text-white/85">
+            Empresas podem apoiar o Nós na Rua por meio de doações financeiras,
+            produtos, serviços, logística, campanhas e outras formas de
+            parceria.
+          </p>
+
+          {companyPartnership.fiscalInfo.enabled &&
+            companyPartnership.fiscalInfo.text && (
+              <p className="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-white/75">
+                {companyPartnership.fiscalInfo.text}
+              </p>
+            )}
+
+          <a
+            href={whatsappUrl(whatsappMessages.partnership)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-on-brown mt-7"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+            Quero ser parceiro
+          </a>
+
+          <Character
+            who="blazer"
+            tone="cream"
+            className="pointer-events-none absolute -bottom-4 -right-2 hidden w-48 lg:block"
+            sizes="192px"
+          />
         </Reveal>
       </div>
     </section>

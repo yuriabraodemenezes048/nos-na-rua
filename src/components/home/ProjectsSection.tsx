@@ -37,6 +37,7 @@ export function ProjectsSection() {
 
 function ProjectChapter({ project, index }: { project: Project; index: number }) {
   const imageFirst = index % 2 === 0;
+  const isLast = index === 2;
   const cta = project.cta;
 
   return (
@@ -47,6 +48,7 @@ function ProjectChapter({ project, index }: { project: Project; index: number })
         variant="contain"
         minH="min-h-[72svh]"
         imageFirst={imageFirst}
+        layout={isLast ? "stacked" : "split"}
       >
         <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#F0C6B6]">
           {project.kicker}

@@ -39,25 +39,6 @@ export function LeafSprig({ className = "" }: { className?: string }) {
   );
 }
 
-/** Bloco orgânico de fundo (blob), com leve movimento opcional. */
-export function Blob({
-  className = "",
-  animate = false,
-}: {
-  className?: string;
-  animate?: boolean;
-}) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`${className} ${animate ? "animate-drift" : ""}`}
-      style={{
-        borderRadius: "46% 54% 42% 58% / 56% 44% 56% 44%",
-      }}
-    />
-  );
-}
-
 /** Aspas / marcação simples usada em destaques. */
 export function Sparkline({ className = "" }: { className?: string }) {
   return (

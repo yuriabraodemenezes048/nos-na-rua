@@ -1,8 +1,11 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site";
 
 /**
  * Imagem de compartilhamento, gerada com a identidade da associação.
+ * Usa a logo oficial (arquivo real em /public), nunca uma recriação.
  * O gerador (Satori) exige "display: flex" em qualquer elemento com mais de
  * um filho, por isso todos os contêineres usam flex.
  */
@@ -11,7 +14,12 @@ export const alt = "Associação Nós na Rua – São José/SC";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logoBuffer = await readFile(
+    join(process.cwd(), "public", "logo-nos-na-rua.png"),
+  );
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -26,29 +34,10 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Marca */}
+        {/* Marca — logo oficial */}
         <div style={{ display: "flex", alignItems: "center", gap: "22px" }}>
-          <div
-            style={{
-              width: "72px",
-              height: "72px",
-              borderRadius: "999px",
-              background: "#7A4A3A",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                width: "28px",
-                height: "28px",
-                borderRadius: "999px",
-                background: "#D97C67",
-                display: "flex",
-              }}
-            />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={84} height={94} alt="" />
           <div
             style={{
               display: "flex",

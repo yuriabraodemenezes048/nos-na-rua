@@ -12,7 +12,7 @@ export function TransparencyPreview() {
   ];
 
   return (
-    <section id="transparencia-preview" className="section bg-sand/40">
+    <section id="transparencia-preview" className="section">
       <div className="container-site max-w-3xl">
         <Reveal>
           <p className="kicker">Transparência</p>

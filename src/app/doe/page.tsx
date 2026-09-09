@@ -41,7 +41,7 @@ export default function DonatePage() {
             </h1>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted">
               Cada contribuição fortalece as ações do Nós na Rua junto a pessoas
-              e famílias em situação de vulnerabilidade.
+              e famílias em situação de vulnerabilidade social.
             </p>
           </div>
           <div className="mx-auto hidden w-full max-w-[13rem] sm:block">

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Associação sem fins lucrativos que apoia pessoas em situação de rua e famílias em situação de vulnerabilidade na Grande Florianópolis.",
+    "Associação sem fins lucrativos que apoia pessoas e famílias em situação de vulnerabilidade social na Grande Florianópolis.",
   applicationName: siteConfig.name,
   alternates: { canonical: "/" },
   openGraph: {
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.legalName,
     title: "Nós na Rua | Associação em São José – SC",
     description:
-      "Associação sem fins lucrativos que apoia pessoas em situação de rua e famílias em situação de vulnerabilidade na Grande Florianópolis.",
+      "Associação sem fins lucrativos que apoia pessoas e famílias em situação de vulnerabilidade social na Grande Florianópolis.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nós na Rua | Associação em São José – SC",
     description:
-      "Associação sem fins lucrativos que apoia pessoas em situação de rua e famílias em situação de vulnerabilidade na Grande Florianópolis.",
+      "Associação sem fins lucrativos que apoia pessoas e famílias em situação de vulnerabilidade social na Grande Florianópolis.",
   },
   robots: { index: true, follow: true },
 };

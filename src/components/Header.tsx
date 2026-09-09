@@ -11,13 +11,20 @@ const navLinks = [
   { href: "/#quem-somos", label: "Quem somos" },
   { href: "/#projetos", label: "Projetos" },
   { href: "/#como-ajudar", label: "Como ajudar" },
+  { href: "/#parceiros", label: "Parceiros" },
   { href: "/transparencia", label: "Transparência" },
 ];
 
 /**
- * Cabeçalho fixo e compacto. A logo (à esquerda) leva à home — por isso não há
- * link "Início". Fundo sólido de alta opacidade após a rolagem. Menu do celular
- * acessível: foco controlado e fechamento por Escape.
+ * Cabeçalho fixo e compacto.
+ *
+ * Sobre o hero da home, usa um fundo translúcido escuro (bg-ink/55 + blur) em
+ * vez de transparência pura — isso garante contraste AA para a navegação
+ * independentemente do que estiver na foto por baixo (testado contra o pixel
+ * mais claro da imagem). Ao rolar, ou em outras páginas, o fundo vira creme
+ * sólido. Menu do celular é um diálogo acessível: foco move para dentro ao
+ * abrir, fica preso no painel (Tab/Shift+Tab), e Escape fecha e devolve o
+ * foco ao botão que abriu.
  */
 export function Header() {
   const pathname = usePathname();
@@ -46,12 +53,38 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
+
+    function getFocusable(): HTMLElement[] {
+      return [
+        ...(panelRef.current?.querySelectorAll<HTMLElement>("a, button") ?? []),
+      ];
+    }
+
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        // Devolve o foco ao botão que abriu o menu (padrão de diálogo acessível).
+        toggleRef.current?.focus();
+        return;
+      }
+      // Prende o foco dentro do painel enquanto o menu estiver aberto.
+      if (event.key === "Tab") {
+        const focusable = getFocusable();
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     }
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
-    panelRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+    getFocusable()[0]?.focus();
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
@@ -65,10 +98,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b transition-colors ${
+      className={`sticky top-0 z-40 border-b backdrop-blur-md transition-colors ${
         overHero
-          ? "border-transparent bg-transparent"
-          : "border-sand/80 bg-cream/95 backdrop-blur-md"
+          ? "border-white/10 bg-ink/55"
+          : "border-sand/80 bg-cream/95"
       }`}
     >
       <div className="container-site flex h-16 items-center justify-between gap-4">
@@ -90,7 +123,7 @@ export function Header() {
               href={link.href}
               className={`text-[0.9375rem] font-medium transition-colors ${
                 overHero
-                  ? "text-white/90 hover:text-white"
+                  ? "text-white [text-shadow:0_1px_5px_rgba(0,0,0,0.55)] hover:text-white/85"
                   : "text-muted hover:text-ink"
               }`}
             >
@@ -112,7 +145,9 @@ export function Header() {
           aria-expanded={open}
           aria-controls="menu-mobile"
           className={`grid h-11 w-11 place-items-center rounded-full border transition-colors lg:hidden ${
-            overHero ? "border-white/50 text-white" : "border-brown/20 text-brown"
+            overHero
+              ? "border-white/50 bg-ink/15 text-white backdrop-blur-sm"
+              : "border-brown/20 text-brown"
           }`}
         >
           <MenuIcon className="h-6 w-6" />

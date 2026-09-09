@@ -31,8 +31,7 @@ export function QuemSomos() {
             </p>
             <p>
               Desde {impact.sinceYear}, atuamos na {location.region} apoiando
-              pessoas em situação de rua e famílias em situação de
-              vulnerabilidade social.
+              pessoas e famílias em situação de vulnerabilidade social.
             </p>
           </div>
           <p className="mt-6 border-l-2 border-terracotta pl-4 text-[0.95rem] italic leading-relaxed text-brown">

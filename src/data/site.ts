@@ -87,7 +87,7 @@ export const siteConfig = {
    * CONTENT_PENDING.md) — o texto abaixo é provisório e aprovado para uso.
    */
   mission: {
-    full: "Promover assistência, inclusão e defesa de direitos para pessoas e famílias em situação de vulnerabilidade, fortalecendo sua dignidade, autonomia e cidadania.",
+    full: "Promover assistência, inclusão e defesa de direitos para pessoas e famílias em situação de vulnerabilidade social, fortalecendo sua dignidade, autonomia e cidadania.",
     short:
       "Promover assistência, inclusão e defesa de direitos, fortalecendo dignidade, autonomia e cidadania.",
     positioning:
@@ -130,7 +130,7 @@ export const whatsappMessages = {
   volunteer:
     "Olá! Conheci o Nós na Rua pelo site e gostaria de saber como participar como voluntário(a).",
   partnership:
-    "Olá! Conheci o Nós na Rua pelo site e gostaria de conversar sobre uma parceria com a minha empresa.",
+    "Olá! Conheci o Nós na Rua pelo site e gostaria de saber mais sobre as possibilidades de parceria para empresas.",
   adoptFamily:
     "Olá! Conheci o Projeto Adote uma Família e gostaria de saber como posso apoiar.",
   seasonal:
@@ -142,12 +142,48 @@ export const whatsappMessages = {
 } as const;
 
 /**
- * Parceiros reais e confirmados. As logos poderão ser adicionadas depois;
- * enquanto isso, os parceiros aparecem pelo nome. Não inventar parceiros.
+ * Parceiros reais e confirmados.
+ *
+ * `logo` é opcional — quando ausente, o parceiro é apresentado pelo nome.
+ * Assim que a associação enviar o arquivo oficial, basta:
+ *   1. colocar a imagem em /public/parceiros/;
+ *   2. informar `logo`, `logoWidth` e `logoHeight` (dimensões reais do
+ *      arquivo, para o Next.js evitar layout shift).
+ * A grade em PartnersSection se adapta sozinha à quantidade de parceiros.
+ * Não inventar parceiros nem logos.
  */
-export const partners = [
-  { name: "Cozinha Solidária da Vila Aparecida", note: "Produção das marmitas" },
-] as const;
+export type Partner = {
+  name: string;
+  description: string;
+  logo?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+  url?: string;
+};
+
+export const partners: Partner[] = [
+  {
+    name: "Cozinha Solidária da Vila Aparecida",
+    description: "Produção das marmitas",
+  },
+];
+
+/**
+ * Empresas parceiras — apoio institucional para empresas.
+ *
+ * `fiscalInfo` fica desabilitado até a contabilidade da associação validar o
+ * enquadramento fiscal do Nós na Rua. Enquanto `enabled` for false, nenhuma
+ * informação sobre dedução ou incentivo fiscal é publicada — não afirmar
+ * benefício fiscal sem essa confirmação. Quando aprovado, preencher `text` e
+ * mudar `enabled` para true; a seção de Empresas já está preparada para
+ * renderizar esse bloco sem precisar ser reconstruída.
+ */
+export const companyPartnership = {
+  fiscalInfo: {
+    enabled: false,
+    text: null as string | null,
+  },
+} as const;
 
 /** Monta o link do WhatsApp com a mensagem devidamente codificada. */
 export function whatsappUrl(message: string = whatsappMessages.general): string {
