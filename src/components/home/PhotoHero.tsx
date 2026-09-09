@@ -68,8 +68,8 @@ export function PhotoHero() {
             Solidariedade que chega a quem precisa.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand">
-            O Nós na Rua apoia pessoas e famílias em situação de vulnerabilidade
-            social na {siteConfig.location.region}.
+            Apoiamos pessoas e famílias em situação de vulnerabilidade social na{" "}
+            {siteConfig.location.region}.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

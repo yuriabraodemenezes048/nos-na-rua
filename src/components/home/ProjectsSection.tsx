@@ -95,8 +95,8 @@ function ProjectChapter({ project, index }: { project: Project; index: number })
           imageFirst={!imageFirst}
         >
           <p className="max-w-prose font-display text-[1.375rem] leading-snug text-cream sm:text-[1.75rem]">
-            A cada segunda-feira, a caixa térmica “Nós na Rua” leva refeições
-            quentes para quem mais precisa.
+            A cada segunda-feira, a caixa térmica do Nós na Rua acompanha a
+            entrega semanal de refeições e acolhimento.
           </p>
         </PhotoChapter>
       )}

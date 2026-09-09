@@ -21,8 +21,8 @@ export function HelpSection() {
             <p className="kicker">Como ajudar</p>
             <h2 className="section-title mt-4">Tem muitas formas de fazer parte.</h2>
             <p className="section-lead mt-4">
-              Cada contribuição ajuda o Nós na Rua a manter suas ações e ampliar
-              sua rede de cuidado.
+              Cada contribuição ajuda o Nós na Rua a manter suas ações e
+              fortalecer sua rede de cuidado.
             </p>
           </Reveal>
           <Reveal variant="right" delay={120} className="mx-auto hidden w-36 lg:block">
