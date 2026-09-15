@@ -7,10 +7,14 @@ import { ArrowRightIcon } from "@/components/Icons";
 import { siteConfig } from "@/data/site";
 
 /**
- * Hero fotográfico em tela cheia — a foto real da ação na Tapera preenche
- * toda a largura e a maior parte da viewport, como a abertura de um
- * documentário. O texto fica sobre a imagem com um degradê escuro que garante
- * contraste WCAG AA. Zoom inicial quase imperceptível (desativado sob
+ * Hero fotográfico em tela cheia — a entrega de uma cesta básica a uma
+ * família, com a voluntária sorrindo ao lado, preenche toda a largura e a
+ * maior parte da viewport, como a abertura de um documentário. O crop é
+ * responsivo: a foto é vertical, então no mobile o enquadramento corta
+ * pouco na horizontal (mantendo as pessoas visíveis) e no desktop a faixa
+ * visível é horizontal, então o foco fica nos rostos, perto do topo. O
+ * texto fica sobre a imagem com um degradê escuro que garante contraste
+ * WCAG AA. Zoom inicial quase imperceptível (desativado sob
  * prefers-reduced-motion).
  */
 export function PhotoHero() {
@@ -23,19 +27,18 @@ export function PhotoHero() {
 
   return (
     <section
-      className="relative isolate -mt-16 flex min-h-[92svh] w-full items-end overflow-hidden"
+      className="relative isolate -mt-16 flex min-h-[78svh] w-full items-end overflow-hidden sm:min-h-[92svh]"
       aria-labelledby="hero-title"
     >
       <Image
-        src="/acoes/hero-tapera-comunitario.webp"
-        alt="Voluntária da Associação Nós na Rua organizando doações de roupas no Conselho Comunitário da Tapera, em São José."
+        src="/acoes/entrega-familia-final.webp"
+        alt="Voluntária do Nós na Rua sorrindo ao lado de uma família, de costas, recebendo uma cesta básica na porta de casa."
         fill
         priority
         sizes="100vw"
-        className={`object-cover transition-transform duration-[1400ms] ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none ${
+        className={`object-cover object-[12%_center] transition-transform duration-[1400ms] ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none sm:object-[center_20%] ${
           loaded ? "scale-100" : "scale-[1.06]"
         }`}
-        style={{ objectPosition: "center 38%" }}
       />
       {/* Degradês: escuro embaixo e à esquerda, onde fica o texto */}
       <div
