@@ -19,7 +19,8 @@ export function TransparencyPreview() {
           <h2 className="section-title mt-4">Transparência também é cuidado.</h2>
           <p className="section-lead mt-4">
             As doações recebidas são destinadas à manutenção das ações semanais e
-            à compra de materiais e insumos necessários para os projetos ativos.
+            à aquisição de materiais, insumos e recursos necessários para os
+            projetos ativos.
           </p>
           <p className="mt-3 max-w-prose leading-relaxed text-muted">
             Nosso compromisso é agir com responsabilidade, clareza e respeito por

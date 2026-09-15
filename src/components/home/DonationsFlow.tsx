@@ -23,8 +23,9 @@ export function DonationsFlow() {
           <p className="kicker">Para onde vão as doações</p>
           <h2 className="section-title mt-4">Cada doação vira ação concreta.</h2>
           <p className="section-lead mt-4">
-            Tudo o que chega até o Nós na Rua é direcionado às ações reais da
-            associação — sem intermediários.
+            As doações recebidas ajudam a manter as ações e os projetos do
+            Nós na Rua, além da aquisição de materiais, insumos e recursos
+            necessários para cada iniciativa.
           </p>
 
           <dl className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
