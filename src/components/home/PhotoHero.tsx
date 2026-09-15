@@ -27,24 +27,24 @@ export function PhotoHero() {
       aria-labelledby="hero-title"
     >
       <Image
-        src="/acoes/tapera-acao.webp"
-        alt="Ação comunitária da Associação Nós na Rua na Tapera, com roupas, calçados, voluntários e famílias reunidas."
+        src="/acoes/hero-tapera-comunitario.webp"
+        alt="Voluntária da Associação Nós na Rua organizando doações de roupas no Conselho Comunitário da Tapera, em São José."
         fill
         priority
         sizes="100vw"
         className={`object-cover transition-transform duration-[1400ms] ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none ${
           loaded ? "scale-100" : "scale-[1.06]"
         }`}
-        style={{ objectPosition: "center 42%" }}
+        style={{ objectPosition: "center 38%" }}
       />
       {/* Degradês: escuro embaixo e à esquerda, onde fica o texto */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-brown-dark/92 via-brown-dark/35 to-brown-dark/10"
+        className="absolute inset-0 bg-gradient-to-t from-brown-dark/97 via-brown-dark/68 to-brown-dark/20"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-brown-dark/70 via-brown-dark/20 to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-brown-dark/90 via-brown-dark/55 to-transparent"
       />
       {/* Escurecimento no topo, para a navegação branca permanecer legível sobre a foto */}
       <div
@@ -56,7 +56,7 @@ export function PhotoHero() {
         <div
           className={`max-w-2xl transition-all duration-700 ease-out motion-reduce:transition-none ${
             loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-          } motion-reduce:translate-y-0 motion-reduce:opacity-100`}
+          } motion-reduce:translate-y-0 motion-reduce:opacity-100 [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]`}
         >
           <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#F0C6B6]">
             Associação Nós na Rua
@@ -67,7 +67,7 @@ export function PhotoHero() {
           >
             Solidariedade que chega a quem precisa.
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white">
             Apoiamos pessoas e famílias em situação de vulnerabilidade social na{" "}
             {siteConfig.location.region}.
           </p>
@@ -78,14 +78,14 @@ export function PhotoHero() {
             </Link>
             <a
               href="#projetos"
-              className="inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-full border border-white/60 px-7 text-base font-semibold text-white transition-colors hover:bg-white/10 sm:w-auto"
+              className="inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-full border border-white/70 bg-ink/25 px-7 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 sm:w-auto"
             >
               Conheça nossas ações
               <ArrowRightIcon className="h-5 w-5" />
             </a>
           </div>
 
-          <p className="mt-8 text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-white/70">
+          <p className="mt-8 text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-white/85">
             São José • Santa Catarina
           </p>
         </div>

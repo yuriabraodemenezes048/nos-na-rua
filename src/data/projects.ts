@@ -53,10 +53,10 @@ export const projects: Project[] = [
     facts: ["Apoio mensal", "Famílias cadastradas", "Necessidades essenciais"],
     images: [
       {
-        src: "/acoes/tapera-familias.webp",
-        alt: "Famílias reunidas junto aos banners da campanha Adote uma Família, com rostos preservados.",
-        width: 620,
-        height: 210,
+        src: "/acoes/adote-familia-kit.webp",
+        alt: "Voluntária do Nós na Rua entregando um kit de doações a famílias cadastradas no projeto Adote uma Família.",
+        width: 1086,
+        height: 1448,
       },
     ],
     cta: { label: "Quero apoiar uma família", message: whatsappMessages.adoptFamily },
@@ -69,10 +69,10 @@ export const projects: Project[] = [
     facts: ["Páscoa · Dia das Crianças · Natal", "Recreação", "Integração comunitária"],
     images: [
       {
-        src: "/acoes/tapera-calcados.webp",
-        alt: "Roupas e calçados doados organizados durante ação comunitária do Nós na Rua na Tapera.",
-        width: 545,
-        height: 300,
+        src: "/acoes/triagem-roupas-tapera.webp",
+        alt: "Voluntárias organizando roupas doadas durante ação comunitária do Nós na Rua na Tapera.",
+        width: 1448,
+        height: 1086,
       },
     ],
     cta: { label: "Ajude nas próximas ações", message: whatsappMessages.seasonal },

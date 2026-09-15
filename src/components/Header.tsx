@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/#quem-somos", label: "Quem somos" },
   { href: "/#projetos", label: "Projetos" },
   { href: "/#como-ajudar", label: "Como ajudar" },
-  { href: "/#parceiros", label: "Parceiros" },
+  { href: "/#galeria", label: "Galeria" },
   { href: "/transparencia", label: "Transparência" },
 ];
 

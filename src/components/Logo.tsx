@@ -23,7 +23,7 @@ export function Logo({
         width={480}
         height={541}
         priority={!isFooter}
-        className={`w-auto ${isFooter ? "h-16" : "h-11"} ${className}`}
+        className={`w-auto shrink-0 self-start ${isFooter ? "h-16" : "h-11"} ${className}`}
       />
     );
   }
