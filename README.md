@@ -96,3 +96,23 @@ automaticamente:
 ```bash
 git push origin main
 ```
+
+## Domínio
+
+A URL pública do site é centralizada em `siteConfig.url`
+(`src/data/site.ts`), lida de `NEXT_PUBLIC_SITE_URL` com o domínio atual da
+Vercel como fallback. `metadataBase`, canonical, Open Graph, JSON-LD,
+sitemap e robots consomem esse único valor.
+
+Quando o domínio oficial for conectado na Vercel:
+
+1. defina `NEXT_PUBLIC_SITE_URL=https://DOMINIO-OFICIAL` nas variáveis de
+   ambiente do projeto na Vercel e refaça o deploy;
+2. confira `canonical`, Open Graph, `sitemap.xml` e `robots.txt` no domínio
+   novo;
+3. se a Vercel estiver configurada para redirecionar o domínio `.vercel.app`
+   para o domínio oficial, teste esse redirecionamento.
+
+Não alterar `NEXT_PUBLIC_SITE_URL` antes de o domínio estar de fato
+conectado e funcionando — isso apontaria mecanismos de busca para um
+endereço ainda inativo.

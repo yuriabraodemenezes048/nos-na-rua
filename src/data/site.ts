@@ -15,8 +15,22 @@ export const siteConfig = {
   /** Razão social completa */
   legalName: "Associação Nós na Rua – São José",
 
-  /** URL de produção */
-  url: "https://nos-na-rua.vercel.app",
+  /**
+   * URL pública do site — usada em metadataBase, canonical, Open Graph,
+   * JSON-LD, sitemap e robots (todos consomem este único valor).
+   *
+   * Controlada por NEXT_PUBLIC_SITE_URL, com o domínio atual da Vercel como
+   * fallback. Quando o domínio oficial for conectado na Vercel:
+   *   1. defina NEXT_PUBLIC_SITE_URL=https://DOMINIO-OFICIAL (nas variáveis
+   *      de ambiente do projeto na Vercel) e refaça o deploy;
+   *   2. confira canonical, Open Graph, sitemap.xml e robots.txt no domínio
+   *      novo;
+   *   3. se a Vercel estiver configurada para redirecionar o domínio
+   *      .vercel.app para o domínio oficial, teste esse redirecionamento.
+   * Enquanto isso não acontecer, o fallback abaixo mantém o site apontando
+   * para o domínio atual — não trocar manualmente antes da migração real.
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://nos-na-rua.vercel.app",
 
   organization: {
     cnpj: "43.557.623/0001-72",
@@ -144,27 +158,81 @@ export const whatsappMessages = {
 /**
  * Parceiros reais e confirmados.
  *
- * `logo` é opcional — quando ausente, o parceiro é apresentado pelo nome.
- * Assim que a associação enviar o arquivo oficial, basta:
- *   1. colocar a imagem em /public/parceiros/;
+ * `logo` é opcional — quando ausente (caso da Cozinha Solidária hoje), o
+ * parceiro é apresentado por um bloco tipográfico no mesmo sistema visual.
+ * Assim que uma logo oficial estiver disponível, basta:
+ *   1. colocar o arquivo em /public/images/parceiros/;
  *   2. informar `logo`, `logoWidth` e `logoHeight` (dimensões reais do
  *      arquivo, para o Next.js evitar layout shift).
- * A grade em PartnersSection se adapta sozinha à quantidade de parceiros.
- * Não inventar parceiros nem logos.
+ * `href` só deve ser preenchido com um link oficial confirmado — nunca
+ * inventar URL. `role` ajusta a concordância de gênero no alt text
+ * ("parceira" é o padrão; use "parceiro" quando o nome pedir, ex.: Conselho).
+ * A seção em PartnersSection se adapta sozinha à quantidade de parceiros.
+ * Não inventar parceiros, logos, links ou funções que não estejam aqui.
  */
 export type Partner = {
+  id: string;
   name: string;
-  description: string;
   logo?: string;
   logoWidth?: number;
   logoHeight?: number;
-  url?: string;
+  href?: string;
+  /** Exibido junto ao nome quando não há logo (ex.: "@usuario"). */
+  instagramHandle?: string;
+  description?: string;
+  role?: "parceira" | "parceiro";
 };
 
 export const partners: Partner[] = [
   {
+    id: "ceconluz",
+    name: "Ceconluz",
+    logo: "/images/parceiros/ceconluz.png",
+    logoWidth: 377,
+    logoHeight: 371,
+  },
+  {
+    id: "cozinha-solidaria",
     name: "Cozinha Solidária da Vila Aparecida",
     description: "Produção das marmitas",
+    href: "https://www.instagram.com/shira_cozinhasolidaria",
+    instagramHandle: "@shira_cozinhasolidaria",
+  },
+  {
+    id: "body-angel",
+    name: "Body Angel Training Center",
+    logo: "/images/parceiros/body-angel.png",
+    logoWidth: 900,
+    logoHeight: 563,
+  },
+  {
+    id: "run-fitness-club",
+    name: "Run Fitness Club",
+    logo: "/images/parceiros/run-fitness-club.png",
+    logoWidth: 1200,
+    logoHeight: 698,
+  },
+  {
+    id: "gelus",
+    name: "Gelus",
+    logo: "/images/parceiros/gelus.png",
+    logoWidth: 1200,
+    logoHeight: 433,
+  },
+  {
+    id: "charlie",
+    name: "Charlie",
+    logo: "/images/parceiros/charlie-brownie.png",
+    logoWidth: 900,
+    logoHeight: 281,
+  },
+  {
+    id: "conselho-comunitario-tapera",
+    name: "Conselho Comunitário da Tapera",
+    logo: "/images/parceiros/centro-comunitario-tapera.png",
+    logoWidth: 900,
+    logoHeight: 900,
+    role: "parceiro",
   },
 ];
 
