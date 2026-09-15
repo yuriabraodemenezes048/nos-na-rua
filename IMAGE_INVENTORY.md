@@ -23,7 +23,7 @@ As fontes originais ficam em `C:/Users/yuria/Downloads`.
 - **Origem:** `equipe nos marmita.jpeg` (1536×1536)
 - **Conteúdo:** 5 voluntários posando com camisetas da campanha e caixas de
   doação. **Posaram voluntariamente** para o registro institucional.
-- **Uso:** faixa "Uma rede de pessoas cuidando de pessoas" (`/acoes/equipe.webp`,
+- **Uso:** faixa "Uma rede de pessoas cuidando de pessoas" (`/acoes/equipe.png`,
   recorte paisagem), logo após "Quem somos".
 - **Decisão:** **USAR.** Rostos de voluntários mantidos (posaram). Pendência:
   confirmar autorização formal de uso de imagem.

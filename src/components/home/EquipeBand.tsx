@@ -8,16 +8,16 @@ export function EquipeBand() {
   return (
     <PhotoChapter
       image={{
-        src: "/acoes/equipe.webp",
+        src: "/acoes/equipe.png",
         alt: "Equipe de voluntários da Associação Nós na Rua reunida durante ação social, com caixas de doação.",
-        width: 1456,
-        height: 900,
-        position: "center 35%",
+        width: 1138,
+        height: 809,
+        position: "center 10%",
       }}
       variant="cover"
       overlay="bottom"
       align="bottom"
-      minH="min-h-[62svh] sm:min-h-[70svh]"
+      minH="min-h-[38svh] lg:min-h-[70svh]"
     >
       <p className="font-display text-[1.75rem] font-semibold leading-tight text-cream sm:text-[2.25rem]">
         Uma rede de pessoas cuidando de pessoas.
